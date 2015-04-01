@@ -1,9 +1,9 @@
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes.dex : \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\BuildConfig.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\CordovaApp.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\R$attr.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\R$drawable.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\R$string.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\R$xml.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\classes\io\cordova\BlankCordovaApp1\R.class \
-d:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\ant-build\dexedLibs\classes-c5b93a3a50c545706c1882030f8892aa.jar \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes.dex : \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\BuildConfig.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\CordovaApp.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\R$attr.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\R$drawable.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\R$string.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\R$xml.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\classes\Moffat\Oven\Simulator\R.class \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\ant-build\dexedLibs\classes-3cf5f3b4095b3c3e7b81859ff5ba3c13.jar \

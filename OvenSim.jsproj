@@ -148,19 +148,20 @@
     <Content Include="OvenProgramManagement.js" />
     <Content Include="OvenProgramStage.js" />
     <Content Include="OvenScripts.js" />
-    <Content Include="OvenSim.sln" />
     <Content Include="OvenViewModel.js" />
     <Content Include="Project_Readme.html" />
     <Content Include="SoundManagement.js" />
     <Content Include="Sounds\beep1.mp3" />
     <Content Include="StatusProperties.js" />
-    <Content Include="Style.css" />
-    <Content Include="Style.css.map">
-      <DependentUpon>Style.css</DependentUpon>
+    <Content Include="style.css">
+      <DependentUpon>style.less</DependentUpon>
     </Content>
-    <Content Include="Style.less" />
-    <Content Include="Style.min.css">
-      <DependentUpon>Style.css</DependentUpon>
+    <Content Include="style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="style.less" />
+    <Content Include="style.min.css">
+      <DependentUpon>style.css</DependentUpon>
     </Content>
     <Content Include="Subscriptions.js" />
     <Content Include="TemperatureManagement.js" />

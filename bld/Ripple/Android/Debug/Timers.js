@@ -59,16 +59,22 @@ function Timers(self) {
     self.EditProgramStartInterval = 2000; //ms
 
     self.ClearEditProgramStartTimer = function () {
-        if (self.EditProgramStartTimerId !== 11)
+        if (self.EditProgramStartTimerId !== 11) {
+            console.log('ClearEditProgramStartTimer');
             clearInterval(self.EditProgramStartTimerId);
+        }
     };
 
     self.StartEditProgramStartIntervalTimer = function () {
+        console.log('StartEditProgramStartIntervalTimer');
         self.ClearEditProgramStartTimer(); //Stop the timer
-        self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
+
+        if (!self.ProgramStartTimerRunning)
+            self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
     };
 
     self.NextEditProgramStartInterval = function () {
+        console.log('NextEditProgramStartInterval');
         self.IsWaitingForEditProgramStartInterval(false); //Always reset this
         self.ClearEditProgramStartTimer(); //Stop the timer
 
@@ -272,10 +278,12 @@ function Timers(self) {
     self.MasterBlinkOffInterval = blinkInterval; //ms - this is used to turn the oven off
     
     self.StartMasterBlinkIntervalTimer = function () {
+        //console.log('here');
         self.MasterBlinkTimerId = setInterval(function () { self.NextMasterBlinkInterval(); }, self.MasterBlinkOffInterval);
     };
 
     self.NextMasterBlinkInterval = function () {
+        //console.log('here');
         self.MasterBlinkOn(!self.MasterBlinkOn());
     };
 

@@ -1,2 +1,2 @@
-D:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-D:\Temp\Testing\BlankCordovaApp1\bld\Debug\platforms\android\CordovaLib\AndroidManifest.xml \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
+C:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\CordovaLib\AndroidManifest.xml \
