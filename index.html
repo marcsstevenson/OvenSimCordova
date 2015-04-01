@@ -47,8 +47,6 @@
 
             //ovenViewModel.ConnectCoreProbe();
             //ovenViewModel.IncreaseTargetCoreTemperature();
-
-
         });
     </script>
     <title>Moffat Oven Simulator</title>
@@ -94,26 +92,29 @@
         </div>
     </div>
     <div style="float: left; padding: 10px;">
-        <div data-bind="text: 'Core probe connected: ' + CoreProbeConnected()"></div>
-        <button data-bind="click: ConnectCoreProbe, visible: !CoreProbeConnected()">Connect Core Probe</button>
-        <button data-bind="click: DisconnectCoreProbe, visible: CoreProbeConnected">Disconnect Core Probe</button>
-        <div>
-            <button data-bind="click: SetDefaults">Set Defaults</button>
+        <!--<div data-bind="text: 'Core probe connected: ' + CoreProbeConnected()"></div>-->
+        <div style="padding-bottom: 5px">
+            <button data-bind="click: ConnectCoreProbe, visible: !CoreProbeConnected()">Connect Core Probe</button>
+            <button data-bind="click: DisconnectCoreProbe, visible: CoreProbeConnected">Disconnect Core Probe</button>
         </div>
-        <div>
+        <!--<div>
+            <button data-bind="click: SetDefaults">Set Defaults</button>
+        </div>-->
+        <div style="padding-bottom: 5px">
             <span>Actual Temp:</span><span data-bind="text: Math.round(ActualTemperature() * 10) / 10">Temperature</span>
         </div>
 
-        <div>
+        <div style="padding-bottom: 5px">
             <span>Target Temp:</span><span data-bind="text: Math.round(TargetTemperature() * 10) / 10">Temperature</span>
         </div>
+        <div style="padding-bottom: 5px">
+            <span data-bind="text: 'Time: (x' + TimeDilation() + ')'"></span>
+            <button class="btn" data-bind="click: DecreaseTimeDilation">slower</button>
+            <button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
+        </div>
 
-        <span data-bind="text: '(x' + TimeDilation() + ')'"></span>
-        <button class="btn" data-bind="click: DecreaseTimeDilation">slower</button>
-        <button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
-
-        <label>Set Temperature</label>
-        <input data-bind="value: TargetTemperature" type="number" style="width: 200px" />
+        <!--<label>Set Temperature</label>
+        <input data-bind="value: TargetTemperature" type="number" style="width: 200px" />-->
 
         <audio controls id="beepControl" preload="auto" style="display: none">
             <source src="Sounds/beep1.mp3" type="audio/mpeg">

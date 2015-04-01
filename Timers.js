@@ -59,16 +59,22 @@ function Timers(self) {
     self.EditProgramStartInterval = 2000; //ms
 
     self.ClearEditProgramStartTimer = function () {
-        if (self.EditProgramStartTimerId !== 11)
+        //if (self.EditProgramStartTimerId !== 11) {
+            console.log('ClearEditProgramStartTimer');
             clearInterval(self.EditProgramStartTimerId);
+        //}
     };
 
     self.StartEditProgramStartIntervalTimer = function () {
+        console.log('StartEditProgramStartIntervalTimer');
         self.ClearEditProgramStartTimer(); //Stop the timer
-        self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
+
+        if (!self.ProgramStartTimerRunning)
+            self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
     };
 
     self.NextEditProgramStartInterval = function () {
+        console.log('NextEditProgramStartInterval');
         self.IsWaitingForEditProgramStartInterval(false); //Always reset this
         self.ClearEditProgramStartTimer(); //Stop the timer
 
@@ -84,7 +90,7 @@ function Timers(self) {
     self.TempDisplayInterval = 5000; //ms
 
     self.ClearTempDisplayTimer = function () {
-        if (self.TempDisplayTimerId !== 3)
+        //if (self.TempDisplayTimerId !== 3)
             clearInterval(self.TempDisplayTimerId);
     };
 
@@ -108,7 +114,7 @@ function Timers(self) {
     self.PowerOffInterval = 1500; //ms - this is used to turn the oven off
 
     self.ClearPowerTimer = function () {
-        if (self.PowerTimerId !== 2)
+        //if (self.PowerTimerId !== 2)
             clearInterval(self.PowerTimerId);
     };
 
@@ -134,7 +140,7 @@ function Timers(self) {
     self.TimerLongClickInterval = 3000; //ms
 
     self.ClearTimerLongClickTimer = function () {
-        if (self.TimerLongClickTimerId !== 6)
+        //if (self.TimerLongClickTimerId !== 6)
             clearInterval(self.TimerLongClickTimerId);
     };
 
@@ -163,7 +169,7 @@ function Timers(self) {
     self.TimerCountdownInterval = 1000; //ms
 
     self.ClearTimerCountdownTimer = function () {
-        if (self.TimerCountdownTimerId !== 7)
+        //if (self.TimerCountdownTimerId !== 7)
             clearInterval(self.TimerCountdownTimerId);
     };
 
@@ -199,7 +205,7 @@ function Timers(self) {
     };
 
     self.ClearHeatingTimer = function () {
-        if (self.HeatingTimerId !== 0)
+        //if (self.HeatingTimerId !== 0)
             clearInterval(self.HeatingTimerId);
     };
 
@@ -221,7 +227,7 @@ function Timers(self) {
     self.CoreTemperatureModeBlinkOffInterval = blinkInterval;
 
     self.ClearCoreTemperatureModeBlinkTimer = function () {
-        if (self.CoreTemperatureModeBlinkTimerId !== 9)
+        //if (self.CoreTemperatureModeBlinkTimerId !== 9)
             clearInterval(self.CoreTemperatureModeBlinkTimerId);
     };
 
@@ -249,7 +255,7 @@ function Timers(self) {
     self.CoreTemperatureDisplayInterval = 5000; //ms
 
     self.ClearCoreTemperatureDisplayTimer = function () {
-        if (self.CoreTemperatureDisplayTimerId !== 10)
+        //if (self.CoreTemperatureDisplayTimerId !== 10)
             clearInterval(self.CoreTemperatureDisplayTimerId);
     };
 
