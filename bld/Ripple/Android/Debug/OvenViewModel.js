@@ -77,5 +77,15 @@ function OvenViewModel(soundEnabled, blinkingEnabled) {
     //Set defaults
     self.SetDefaults();
 
+    self.DialTestClass = ko.observable('');
+
+    self.MinusTest = function() {
+        self.DialTestClass("dialLeft");
+    };
+
+    self.PlusTest = function () {
+        self.DialTestClass("dialRight");
+    };
+
     return self;
 };

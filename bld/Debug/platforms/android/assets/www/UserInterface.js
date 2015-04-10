@@ -47,7 +47,7 @@ function UserInterface(self) {
         else
             return false;
     });
-
+    
     //Temp
     self.TempButtonUp = function () {
         if (!self.OvenIsOn() || !self.TempButtonUpFunction()) return;
@@ -132,29 +132,82 @@ function UserInterface(self) {
     //Dials - Start
     //Temp Plus/Minus
 
-    self.btnTemp_MinusClick = function () {
+    self.DialTempCss = ko.observable();
+    self.btnTemp_MinusOver = function () {
+        //self.DialTempCss("dialLeft");
+    };
+    self.btnTemp_MinusOut = function () {
+        self.DialTempCss("");
+    };
+    self.btnTemp_PlusOver = function () {
+        //self.DialTempCss("dialRight");
+    };
+    self.btnTemp_PlusOut = function () {
+        self.DialTempCss("");
+    };
+    
+    self.btnTemp_MinusButtonDown = function () {
+        self.DialTempCss("dialLeft");
+
         if (!self.OvenIsOn() || !self.Temp_MinusClickFunction()) return;
 
         self.Temp_MinusClickFunction()();
     };
 
-    self.btnTemp_PlusClick = function () {
+    self.btnTemp_MinusButtonUp = function () {
+        self.DialTempCss("");
+    };
+
+    self.btnTemp_PlusButtonDown = function () {
+        self.DialTempCss("dialRight");
+
         if (!self.OvenIsOn() || !self.Temp_PlusClickFunction()) return;
 
         self.Temp_PlusClickFunction()();
     };
 
+    self.btnTemp_PlusButtonUp = function () {
+        self.DialTempCss("");
+    };
+
     //Timer Plus/Minus
-    self.btnTimer_MinusClick = function () {
+    
+    self.DialTimerCss = ko.observable();
+    self.btnTimer_MinusOver = function () {
+        //self.DialTimerCss("dialLeft");
+    };
+    self.btnTimer_MinusOut = function () {
+        self.DialTimerCss("");
+    };
+    self.btnTimer_PlusOver = function () {
+        //self.DialTimerCss("dialRight");
+    };
+    self.btnTimer_PlusOut = function () {
+        self.DialTimerCss("");
+    };
+
+    self.btnTimer_MinusButtonDown = function () {
+        self.DialTimerCss("dialLeft");
+
         if (!self.OvenIsOn() || !self.Timer_MinusClickFunction()) return;
 
         self.Timer_MinusClickFunction()();
     };
 
-    self.btnTimer_PlusClick = function () {
+    self.btnTimer_MinusButtonUp = function () {
+        self.DialTimerCss("");
+    };
+
+    self.btnTimer_PlusButtonDown = function () {
+        self.DialTimerCss("dialRight");
+
         if (!self.OvenIsOn() || !self.Timer_PlusClickFunction()) return;
 
         self.Timer_PlusClickFunction()();
+    };
+
+    self.btnTimer_PlusButtonUp = function () {
+        self.DialTimerCss("");
     };
 
     //Dials - End

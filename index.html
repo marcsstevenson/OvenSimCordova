@@ -1,130 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
-    <script src="Lib/knockout-3.1.0.js"></script>
-    <script src="Lib/jquery-2.1.1.min.js"></script>
-    <script src="Lib/moment-2.8.4.min.js"></script>
+	<script src="Lib/knockout-3.1.0.js"></script>
+	<script src="Lib/jquery-2.1.1.min.js"></script>
+	<script src="Lib/moment-2.8.4.min.js"></script>
 
-    <script src="OvenViewModel.js"></script>
-    <script src="StatusProperties.js"></script>
-    <script src="UserInterface.js"></script>
+	<script src="OvenViewModel.js"></script>
+	<script src="StatusProperties.js"></script>
+	<script src="UserInterface.js"></script>
 
-    <script src="Timers.js"></script>
-    <script src="Subscriptions.js"></script>
-    <script src="OvenManager.js"></script>
-    <script src="TemperatureManagement.js"></script>
-    <script src="TimerManagement.js"></script>
-    <script src="SoundManagement.js"></script>
-    <script src="OvenProgramManagement.js"></script>
+	<script src="Timers.js"></script>
+	<script src="Subscriptions.js"></script>
+	<script src="OvenManager.js"></script>
+	<script src="TemperatureManagement.js"></script>
+	<script src="TimerManagement.js"></script>
+	<script src="SoundManagement.js"></script>
+	<script src="OvenProgramManagement.js"></script>
 
-    <script src="OvenProgramFactory.js"></script>
-    <script src="OvenProgram.js"></script>
-    <script src="OvenProgramStage.js"></script>
-    <script src="OvenScripts.js"></script>
+	<script src="OvenProgramFactory.js"></script>
+	<script src="OvenProgram.js"></script>
+	<script src="OvenProgramStage.js"></script>
+	<script src="OvenScripts.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            var ovenViewModel = new OvenViewModel(true, true);
-            ko.applyBindings(ovenViewModel);
+	<script>
+		$(document).ready(function () {
+			var ovenViewModel = new OvenViewModel(true, true);
+			ko.applyBindings(ovenViewModel);
 
-            ovenViewModel.TurnOvenOn();
+			ovenViewModel.TurnOvenOn();
 
-            //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
-            //OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
+			//new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
+			//OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
 
 
-            //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
-            //OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
-            //OvenScripts.SetTimerTo1Second(ovenViewModel);
+			//OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+			//OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
+			//OvenScripts.SetTimerTo1Second(ovenViewModel);
 
-            //Testing
+			//Testing
 
-            //ovenViewModel.IncreaseTimer();
+			//ovenViewModel.IncreaseTimer();
 
-            //ovenViewModel.TimerButtonDown();
+			//ovenViewModel.TimerButtonDown();
 
-            //ovenViewModel.ConnectCoreProbe();
-            //ovenViewModel.IncreaseTargetCoreTemperature();
-        });
-    </script>
-    <title>Moffat Oven Simulator</title>
-    <link type="text/css" href="style.css" rel="stylesheet">
+			//ovenViewModel.ConnectCoreProbe();
+			//ovenViewModel.IncreaseTargetCoreTemperature();
+		});
+	</script>
+	<title>Moffat Oven Simulator</title>
+	<link type="text/css" href="style.css" rel="stylesheet">
+	<style>
+	</style>
 </head>
 
 <body>
-    <div class="controlPanel" style="float: left">
-        <div class="TopPadding">
+    <div class="dialTemp" data-bind="css: DialTempCss"></div>
+    <div class="btnTemp_Minus" data-bind="event: { mousedown: btnTemp_MinusButtonDown, mouseup: btnTemp_MinusButtonUp, mouseover: btnTemp_MinusOver, mouseout: btnTemp_MinusOut }"></div>
+    <div class="btnTemp_Plus" data-bind="event: { mousedown: btnTemp_PlusButtonDown, mouseup: btnTemp_PlusButtonUp, mouseover: btnTemp_PlusOver, mouseout: btnTemp_PlusOut }"></div>
+    <div class="dialTimer" data-bind="css: DialTimerCss"></div>
+    <div class="btnTimer_Minus" data-bind="event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }"></div>
+    <div class="btnTimer_Plus" data-bind="event: { mousedown: btnTimer_PlusButtonDown, mouseup: btnTimer_PlusButtonUp, mouseover: btnTimer_PlusOver, mouseout: btnTimer_PlusOut }"></div>
+	<div class="controlPanel" style="float: left">
+		<div class="TopPadding">
 
-        </div>
-        <div class="displayBox DisplayLeftMargin" data-bind="text: TopDisplay"></div>
+		</div>
+		<div class="displayBox DisplayLeftMargin" data-bind="text: TopDisplay"></div>
 
-        <div class="ButtonsLeftMargin ButtonsTopMargin">
-            <!--Steam-->
-            <button class="btn" data-bind="event: { mousedown: SteamButtonDown, mouseup: SteamButtonUp, mouseout: ClearMoistureModeTimer }, css: LightOn_Steam() ? 'btnSteam_On' : 'btnSteam_Off'"></button>
-            <!--Program-->
-            <button class="btn ButtonLeftMargin" data-bind="event: { mousedown: ProgramButtonDown, mouseup: ProgramButtonUp, mouseout: ClearEditProgramStartTimer }, css: LightOn_Program() ? 'btnProgram_On' : 'btnProgram_Off'"></button>
-            <!--Temp-->
-            <button class="btn ButtonLeftMargin" data-bind="click: TempButtonUp, css: LightOn_Temp() ? 'btnTemp_On' : 'btnTemp_Off'"></button>
-        </div>
-        <div class="TempTopPadding SplitLeftMargin">
-            <div class="btnTemp_Minus" data-bind="click: btnTemp_MinusClick"></div>
-            <div class="btnTemp_Plus" data-bind="click: btnTemp_PlusClick"></div>
+		<div class="ButtonsLeftMargin ButtonsTopMargin">
+			<!--Steam-->
+			<button class="btn" data-bind="event: { mousedown: SteamButtonDown, mouseup: SteamButtonUp, mouseout: ClearMoistureModeTimer }, css: LightOn_Steam() ? 'btnSteam_On' : 'btnSteam_Off'"></button>
+			<!--Program-->
+			<button class="btn ButtonLeftMargin" data-bind="event: { mousedown: ProgramButtonDown, mouseup: ProgramButtonUp, mouseout: ClearEditProgramStartTimer }, css: LightOn_Program() ? 'btnProgram_On' : 'btnProgram_Off'"></button>
+			<!--Temp-->
+			<button class="btn ButtonLeftMargin" data-bind="click: TempButtonUp, css: LightOn_Temp() ? 'btnTemp_On' : 'btnTemp_Off'"></button>
+		</div>
+	    <div class="TempTopPadding SplitLeftMargin">
+            <div style="height: 63px;">
 
-            <div style="clear: both"></div>
-        </div>
+            </div>
+	        <!--<div class="btnTemp_Minus" data-bind="click: btnTemp_MinusClick"></div>-->
+	        <!--<div class="btnTemp_Plus" data-bind="click: btnTemp_PlusClick"></div>-->
 
-        <div class="BottomDisplayTopMargin">
-            <div class="displayBox DisplayLeftMargin" data-bind="text: BottomDisplay"></div>
-        </div>
-        <div class="ButtonsLeftMargin ButtonsTopMargin">
-            <!--LightPowerButton-->
-            <button class="btn" data-bind="event: { mousedown: LightPowerButtonDown, mouseup: LightPowerButtonUp }, css: LightOn_LightPower() ? 'btnLightPower_On' : 'btnLightPower_Off'"></button>
-            <!--Fan-->
-            <button class="btn ButtonLeftMargin" data-bind="click: ButtonClickFan, css: LightOn_Fan() ? 'btnFan_On' : 'btnFan_Off'"></button>
-            <!--Timer-->
-            <button class="btn ButtonLeftMargin" data-bind="event: { mousedown: TimerButtonDown, mouseup: TimerButtonUp }, css: LightOn_Timer() ? 'btnTimer_On' : 'btnTimer_Off'"></button>
-        </div>
-        <div class="TimerTopPadding SplitLeftMargin">
-            <div class="btnTimer_Minus" data-bind="click: btnTimer_MinusClick"></div>
-            <div class="btnTimer_Plus" data-bind="click: btnTimer_PlusClick"></div>
-        </div>
-    </div>
-    <div style="float: left; padding: 10px;">
-        <!--<div data-bind="text: 'Core probe connected: ' + CoreProbeConnected()"></div>-->
-        <div style="padding-bottom: 5px">
-            <button data-bind="click: ConnectCoreProbe, visible: !CoreProbeConnected()">Connect Core Probe</button>
-            <button data-bind="click: DisconnectCoreProbe, visible: CoreProbeConnected">Disconnect Core Probe</button>
-        </div>
-        <!--<div>
-            <button data-bind="click: SetDefaults">Set Defaults</button>
-        </div>-->
-        <div style="padding-bottom: 5px">
-            <span>Actual Temp:</span><span data-bind="text: Math.round(ActualTemperature() * 10) / 10">Temperature</span>
-        </div>
+	        <div style="clear: both"></div>
+	    </div>
 
-        <div style="padding-bottom: 5px">
-            <span>Target Temp:</span><span data-bind="text: Math.round(TargetTemperature() * 10) / 10">Temperature</span>
-        </div>
-        <div style="padding-bottom: 5px">
-            <span data-bind="text: 'Time: (x' + TimeDilation() + ')'"></span>
-            <button class="btn" data-bind="click: DecreaseTimeDilation">slower</button>
-            <button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
-        </div>
+		<div class="BottomDisplayTopMargin">
+			<div class="displayBox DisplayLeftMargin" data-bind="text: BottomDisplay"></div>
+		</div>
+		<div class="ButtonsLeftMargin ButtonsTopMargin">
+			<!--LightPowerButton-->
+			<button class="btn" data-bind="event: { mousedown: LightPowerButtonDown, mouseup: LightPowerButtonUp }, css: LightOn_LightPower() ? 'btnLightPower_On' : 'btnLightPower_Off'"></button>
+			<!--Fan-->
+			<button class="btn ButtonLeftMargin" data-bind="click: ButtonClickFan, css: LightOn_Fan() ? 'btnFan_On' : 'btnFan_Off'"></button>
+			<!--Timer-->
+			<button class="btn ButtonLeftMargin" data-bind="event: { mousedown: TimerButtonDown, mouseup: TimerButtonUp }, css: LightOn_Timer() ? 'btnTimer_On' : 'btnTimer_Off'"></button>
+		</div>
+		<div class="TimerTopPadding SplitLeftMargin">
+            <div style="height: 63px;">
 
-        <!--<label>Set Temperature</label>
-        <input data-bind="value: TargetTemperature" type="number" style="width: 200px" />-->
+            </div>
+			<!--<div class="btnTimer_Minus" data-bind="click: btnTimer_MinusClick"></div>-->
+			<!--<div class="btnTimer_Plus" data-bind="click: btnTimer_PlusClick"></div>-->
+		</div>
+	</div>
+	<div style="float: left; padding: 10px;">
+		<!--<div data-bind="text: 'Core probe connected: ' + CoreProbeConnected()"></div>-->
+		<div style="padding-bottom: 5px">
+			<button data-bind="click: ConnectCoreProbe, visible: !CoreProbeConnected()">Connect Core Probe</button>
+			<button data-bind="click: DisconnectCoreProbe, visible: CoreProbeConnected">Disconnect Core Probe</button>
+		</div>
+		<!--<div>
+			<button data-bind="click: SetDefaults">Set Defaults</button>
+		</div>-->
+		<div style="padding-bottom: 5px">
+			<span>Actual Temp:</span><span data-bind="text: Math.round(ActualTemperature() * 10) / 10">Temperature</span>
+		</div>
 
-        <audio controls id="beepControl" preload="auto" style="display: none">
-            <source src="Sounds/beep1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+		<div style="padding-bottom: 5px">
+			<span>Target Temp:</span><span data-bind="text: Math.round(TargetTemperature() * 10) / 10">Temperature</span>
+		</div>
+		<div style="padding-bottom: 5px">
+			<span data-bind="text: 'Time: (x' + TimeDilation() + ')'"></span>
+			<button class="btn" data-bind="click: DecreaseTimeDilation">slower</button>
+			<button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
+		</div>
 
-    <!-- Cordova reference, this is added to your app when it's built. -->
-    <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
+		<!--<label>Set Temperature</label>
+		<input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->
 
-    <script src="scripts/index.js"></script>
+		<audio controls id="beepControl" preload="auto" style="display: none">
+			<source src="Sounds/beep1.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+
+	<!-- Cordova reference, this is added to your app when it's built. -->
+	<script src="cordova.js"></script>
+	<script src="scripts/platformOverrides.js"></script>
+
+	<script src="scripts/index.js"></script>
 </body>
 </html>

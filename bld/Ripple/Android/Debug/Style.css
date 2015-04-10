@@ -8,7 +8,7 @@
 body {
   /*background-color: #231F20;*/
   background-color: #000;
-  color: #aaaaaa;
+  color: #aaa;
 }
 .digial {
   font-family: 'ds-digitalitalic';
@@ -38,11 +38,11 @@ body {
   border: none;
 }
 /*.btnLight__Off {
-    background-image: url('images/btnLight_Off.png');
+	background-image: url('images/btnLight_Off.png');
 }
 
 .btnLight__On {
-    background-image: url('images/btnLight_On.png');
+	background-image: url('images/btnLight_On.png');
 }*/
 .btnSteam_Off {
   background-image: url('images/btnSteam_Off.png');
@@ -82,47 +82,122 @@ body {
 }
 .btnSplit {
   width: 81px;
-  height: 63px;
+  height: 174px;
   cursor: pointer;
   border: none;
   padding: 0;
   float: left;
+  z-index: 100;
 }
 .btnTemp_Minus {
   width: 81px;
-  height: 63px;
+  height: 174px;
   cursor: pointer;
   border: none;
   padding: 0;
   float: left;
+  z-index: 100;
   background-image: url('images/btnTemp_Minus.png');
+  /*background-color: cyan;*/
+  position: absolute;
+  left: 74px;
+  top: 286px;
 }
 .btnTemp_Plus {
   width: 81px;
-  height: 63px;
+  height: 174px;
   cursor: pointer;
   border: none;
   padding: 0;
   float: left;
+  z-index: 100;
   background-image: url('images/btnTemp_Plus.png');
+  /*background-color: red;*/
+  position: absolute;
+  left: 155px;
+  top: 286px;
 }
 .btnTimer_Minus {
   width: 81px;
-  height: 63px;
+  height: 174px;
   cursor: pointer;
   border: none;
   padding: 0;
   float: left;
+  z-index: 100;
   background-image: url('images/btnTimer_Minus.png');
+  /*background-color: cyan;*/
+  z-index: 200;
+  position: absolute;
+  left: 74px;
+  top: 692px;
 }
 .btnTimer_Plus {
   width: 81px;
-  height: 63px;
+  height: 174px;
   cursor: pointer;
   border: none;
   padding: 0;
   float: left;
+  z-index: 100;
   background-image: url('images/btnTimer_Plus.png');
+  position: absolute;
+  left: 155px;
+  top: 692px;
+}
+.dial {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+}
+.dialRight {
+  -moz-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  -o-transform: rotate(20deg);
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
+  /* Standard syntax */
+  -moz-transition: 0.1s ease-in-out;
+  -o-transition: 0.1s ease-in-out;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+.dialLeft {
+  -moz-transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  transform: rotate(-20deg);
+  /* Standard syntax */
+  -moz-transition: 0.1s ease-in-out;
+  -o-transition: 0.1s ease-in-out;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+.dialTemp {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
+  top: 324px;
+}
+.dialTimer {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
+  top: 730px;
 }
 /*Layout*/
 .TopPadding {
