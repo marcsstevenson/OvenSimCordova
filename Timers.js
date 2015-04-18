@@ -6,25 +6,25 @@ function Timers(self) {
     //***Steam - Start
 
     //MoistureMode
-    self.MoistureModeTimerId = 0;
-    self.IsWaitingForMoistureModeOffInterval = ko.observable(false);
-    self.MoistureModeOffInterval = 1500; //ms
+    //self.MoistureModeTimerId = 0;
+    //self.IsWaitingForMoistureModeOffInterval = ko.observable(false);
+    //self.MoistureModeOffInterval = 1500; //ms
 
-    self.ClearMoistureModeTimer = function () {
-        if (self.MoistureModeTimerId !== 0)
-            clearInterval(self.MoistureModeTimerId);
-    };
+    //self.ClearMoistureModeTimer = function () {
+    //    if (self.MoistureModeTimerId !== 0)
+    //        clearInterval(self.MoistureModeTimerId);
+    //};
 
-    self.StartMoistureModeIntervalTimer = function () {
-        self.ClearMoistureModeTimer(); //Stop the timer
-        self.MoistureModeTimerId = setInterval(function () { self.NextMoistureModeInterval(); }, self.MoistureModeOffInterval);
-    };
+    //self.StartMoistureModeIntervalTimer = function () {
+    //    self.ClearMoistureModeTimer(); //Stop the timer
+    //    self.MoistureModeTimerId = setInterval(function () { self.NextMoistureModeInterval(); }, self.MoistureModeOffInterval);
+    //};
 
-    self.NextMoistureModeInterval = function () {
-        self.IsWaitingForMoistureModeOffInterval(false); //Always reset this
-        self.ClearMoistureModeTimer(); //Stop the timer
-        self.StartDisplayingMoistureModeSetup(); //MoistureMode off the oven
-    };
+    //self.NextMoistureModeInterval = function () {
+    //    self.IsWaitingForMoistureModeOffInterval(false); //Always reset this
+    //    self.ClearMoistureModeTimer(); //Stop the timer
+    //    self.StartDisplayingMoistureModeSetup(); //MoistureMode off the oven
+    //};
 
     //SteamShot
 
@@ -54,32 +54,32 @@ function Timers(self) {
     //*** Programming - Start
 
     //EditProgramStart
-    self.EditProgramStartTimerId = 11;
-    self.IsWaitingForEditProgramStartInterval = ko.observable(false);
-    self.EditProgramStartInterval = 2000; //ms
+    //self.EditProgramStartTimerId = 11;
+    //self.IsWaitingForEditProgramStartInterval = ko.observable(false);
+    //self.EditProgramStartInterval = 2000; //ms
 
-    self.ClearEditProgramStartTimer = function () {
-        if (self.EditProgramStartTimerId !== 11) {
-            console.log('ClearEditProgramStartTimer');
-            clearInterval(self.EditProgramStartTimerId);
-        }
-    };
+    //self.ClearEditProgramStartTimer = function () {
+    //    if (self.EditProgramStartTimerId !== 11) {
+    //        console.log('ClearEditProgramStartTimer');
+    //        clearInterval(self.EditProgramStartTimerId);
+    //    }
+    //};
 
-    self.StartEditProgramStartIntervalTimer = function () {
-        console.log('StartEditProgramStartIntervalTimer');
-        self.ClearEditProgramStartTimer(); //Stop the timer
+    //self.StartEditProgramStartIntervalTimer = function () {
+    //    console.log('StartEditProgramStartIntervalTimer');
+    //    self.ClearEditProgramStartTimer(); //Stop the timer
 
-        if (!self.ProgramStartTimerRunning)
-            self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
-    };
+    //    if (!self.ProgramStartTimerRunning)
+    //        self.EditProgramStartTimerId = setInterval(function () { self.NextEditProgramStartInterval(); }, self.EditProgramStartInterval);
+    //};
 
-    self.NextEditProgramStartInterval = function () {
-        console.log('NextEditProgramStartInterval');
-        self.IsWaitingForEditProgramStartInterval(false); //Always reset this
-        self.ClearEditProgramStartTimer(); //Stop the timer
+    //self.NextEditProgramStartInterval = function () {
+    //    console.log('NextEditProgramStartInterval');
+    //    self.IsWaitingForEditProgramStartInterval(false); //Always reset this
+    //    self.ClearEditProgramStartTimer(); //Stop the timer
 
-        self.ProgrammingLongClick();
-    };
+    //    self.ProgramTapHold();
+    //};
 
     //*** Programming - End
 
@@ -109,25 +109,25 @@ function Timers(self) {
 
     //*** Power - Start
 
-    self.PowerTimerId = 2;
-    self.IsWaitingForPowerOffInterval = false;
-    self.PowerOffInterval = 1500; //ms - this is used to turn the oven off
+    //self.PowerTimerId = 2;
+    //self.IsWaitingForPowerOffInterval = false;
+    //self.PowerOffInterval = 1500; //ms - this is used to turn the oven off
 
-    self.ClearPowerTimer = function () {
-        if (self.PowerTimerId !== 2)
-            clearInterval(self.PowerTimerId);
-    };
+    //self.ClearPowerTimer = function () {
+    //    if (self.PowerTimerId !== 2)
+    //        clearInterval(self.PowerTimerId);
+    //};
 
-    self.StartPowerIntervalTimer = function () {
-        self.ClearPowerTimer(); //Stop the timer
-        self.PowerTimerId = setInterval(function () { self.NextPowerInterval(); }, self.PowerOffInterval);
-    };
+    //self.StartPowerIntervalTimer = function () {
+    //    self.ClearPowerTimer(); //Stop the timer
+    //    self.PowerTimerId = setInterval(function () { self.NextPowerInterval(); }, self.PowerOffInterval);
+    //};
 
-    self.NextPowerInterval = function () {
-        self.IsWaitingForPowerOffInterval = false; //Always reset this
-        self.ClearPowerTimer(); //Stop the timer
-        self.TurnOvenOff(); //Power off the oven
-    };
+    //self.NextPowerInterval = function () {
+    //    self.IsWaitingForPowerOffInterval = false; //Always reset this
+    //    self.ClearPowerTimer(); //Stop the timer
+    //    self.TurnOvenOff(); //Power off the oven
+    //};
 
     //*** Power - End
 
@@ -135,32 +135,27 @@ function Timers(self) {
 
     //Reset
 
-    self.TimerLongClickTimerId = 6;
-    self.IsWaitingForTimerLongClickInterval = ko.observable(false);
-    self.TimerLongClickInterval = 3000; //ms
+    //self.TimerTapHoldTimerId = 6;
+    //self.IsWaitingForTimerLongClickInterval = ko.observable(false);
+    //self.TimerTapHoldInterval = 3000; //ms
 
-    self.ClearTimerLongClickTimer = function () {
-        if (self.TimerLongClickTimerId !== 6)
-            clearInterval(self.TimerLongClickTimerId);
-    };
+    //self.ClearTimerLongClickTimer = function () {
+    //    if (self.TimerTapHoldTimerId !== 6)
+    //        clearInterval(self.TimerTapHoldTimerId);
+    //};
 
-    self.StartTimerLongClickIntervalTimer = function () {
-        if (self.IsWaitingForTimerLongClickInterval()) return; //Don't start another
+    //self.StartTimerLongClickIntervalTimer = function () {
+    //    if (self.IsWaitingForTimerLongClickInterval()) return; //Don't start another
 
-        self.IsWaitingForTimerLongClickInterval(true);
-        self.ClearTimerLongClickTimer(); //Stop the timer
-        self.TimerLongClickTimerId = setInterval(function () { self.NextTimerLongClickInterval(); }, self.TimerLongClickInterval);
-    };
+    //    self.IsWaitingForTimerLongClickInterval(true);
+    //    self.ClearTimerLongClickTimer(); //Stop the timer
+    //    self.TimerTapHoldTimerId = setInterval(function () { self.NextTimerLongClickInterval(); }, self.TimerTapHoldInterval);
+    //};
     
-    self.NextTimerLongClickInterval = function () {
-        self.ClearTimerLongClickTimer();
-        //self.TimerLongClickInterval();
-        self.TimerLongClick();
-
-        //self.IsWaitingForTimerCountdownInterval(false); //Always reset this
-        //self.ClearTimerLongClickTimer(); //Stop the timer
-        //self.LongClickTimer();
-    };
+    //self.NextTimerLongClickInterval = function () {
+    //    self.ClearTimerLongClickTimer();
+    //    self.TimerTapHold();
+    //};
 
     //Countdown
 

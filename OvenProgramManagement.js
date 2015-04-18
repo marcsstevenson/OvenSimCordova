@@ -12,22 +12,22 @@ function OvenProgramManagement(self) {
         return self.EditingOvenProgram().OvenProgramStages()[self.EditingOvenProgramStageIndex()];
     });
 
-    self.ProgramDown = function () {
-        self.IsWaitingForEditProgramStartInterval(true);
-        self.StartEditProgramStartIntervalTimer();
-    };
+    //self.ProgramDown = function () {
+    //    self.IsWaitingForEditProgramStartInterval(true);
+    //    self.StartEditProgramStartIntervalTimer();
+    //};
 
-    self.ProgramUp = function () {
-        if (self.IsWaitingForEditProgramStartInterval()) {
-            self.ProgrammingShortClick();
-        }
+    //self.ProgramUp = function () {
+    //    if (self.IsWaitingForEditProgramStartInterval()) {
+    //        self.ProgramTap();
+    //    }
 
-        self.ClearEditProgramStartTimer();
-        self.IsWaitingForEditProgramStartInterval(false);
-    };
+    //    self.ClearEditProgramStartTimer();
+    //    self.IsWaitingForEditProgramStartInterval(false);
+    //};
 
     //  Display Programs - Start
-    self.ProgrammingShortClick = function () {
+    self.ProgramTap = function () {
         if (self.ProgrammingArea() === 0)
             self.SetProgrammingArea(1); //From none to display
         else if (self.ProgrammingArea() === 1)
@@ -38,7 +38,7 @@ function OvenProgramManagement(self) {
             self.NextEditProgramStageValue(); //Move to the next edit stage value
     };
 
-    self.ProgrammingLongClick = function () {
+    self.ProgramTapHold = function () {
         if (self.ProgrammingArea() === 0)
             ; //Twiddle thumbs
         else if (self.ProgrammingArea() === 1)
@@ -95,8 +95,8 @@ function OvenProgramManagement(self) {
 
             self.SetForDisplayProgramTargetTemperature();
 
-            self.TimerButtonDownFunction(self.StartRunningProgram);
-            self.TimerButtonUpFunction(null);
+            self.TimerButtonTapFunction(self.StartRunningProgram);
+            self.TimerButtonTapHoldFunction(null);
 
             //Stop with the flashing
             self.ProgramButtonIsBlinking(false);
@@ -301,6 +301,7 @@ function OvenProgramManagement(self) {
     }
 
     self.ChangeDisplayProgramIndex = function (newIndex) {
+
         self.EditingOvenProgramIndex(newIndex);
         self.SetForDisplayProgramTargetTemperature(); //The target temperature may have changed
     }
@@ -337,7 +338,7 @@ function OvenProgramManagement(self) {
 
     self.ChangeDisplayProgramStageIndex = function (newIndex) {
         self.EditingOvenProgramStageIndex(newIndex);
-        self.SetForDisplayProgramTargetTemperature(); //The target temperature may have changed
+        //self.SetForDisplayProgramTargetTemperature(); //The target temperature may have changed
     }
 
     self.DisplayProgramsValue = function () {
@@ -364,8 +365,8 @@ function OvenProgramManagement(self) {
 
     self.SetBottomDisplayForProgramDisplay = function () {
 
-        self.TimerButtonDownFunction(self.StartRunningProgram);
-        self.TimerButtonUpFunction(null);
+        self.TimerButtonTapFunction(self.StartRunningProgram);
+        self.TimerButtonTapHoldFunction(null);
 
         //Lower Display will show PrH, oven is ‘Pre-Heating’.
         //Program cannot be started until pre-heating is completed.

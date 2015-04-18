@@ -62,9 +62,11 @@ function StatusProperties(self) {
     self.IsHeating = ko.observable(false);
     
     //Button functions
-    self.TempButtonUpFunction = ko.observable();
-    self.TimerButtonDownFunction = ko.observable();
-    self.TimerButtonUpFunction = ko.observable();
+    self.TempButtonTapFunction = ko.observable();
+    
+    self.TimerButtonTapFunction = ko.observable();
+    self.TimerButtonTapHoldFunction = ko.observable();
+
     self.LightOn_TimerFunction = ko.observable();
 
     self.Temp_MinusClickFunction = ko.observable();
@@ -135,10 +137,10 @@ function StatusProperties(self) {
         self.IsHeating(false);
 
         //Clear all timers
-        self.ClearPowerTimer();
-        self.ClearTempDisplayTimer();
-        self.ClearMoistureModeTimer();
-        self.ClearTimerCountdownTimer();
+        //self.ClearPowerTimer();
+        //self.ClearTempDisplayTimer();
+        //self.ClearMoistureModeTimer();
+        //self.ClearTimerCountdownTimer();
 
         //Programming
         self.SetDefaults_Programming();
@@ -161,7 +163,7 @@ function StatusProperties(self) {
 
     self.SetDefaults_TempUi = function () {
         self.TopDisplayFunction(self.TargetTemperature);
-        self.TempButtonUpFunction(self.ToggleTempDisplay);
+        self.TempButtonTapFunction(self.ToggleTempDisplay);
         self.Temp_MinusClickFunction(self.DecreaseTargetTemperature);
         self.Temp_PlusClickFunction(self.IncreaseTargetTemperature);
     };
@@ -176,8 +178,8 @@ function StatusProperties(self) {
     };
 
     self.SetDefaults_TimerButtons = function () {
-        self.TimerButtonDownFunction(self.TimerDown);
-        self.TimerButtonUpFunction(self.TimerUp);
+        self.TimerButtonTapFunction(self.TimerTap);
+        self.TimerButtonTapHoldFunction(self.TimerTapHold);
     };
 
     self.SetDefaults_Programming = function () {

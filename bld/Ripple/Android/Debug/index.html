@@ -5,7 +5,13 @@
 
 	<script src="Lib/knockout-3.1.0.js"></script>
 	<script src="Lib/jquery-2.1.1.min.js"></script>
+    <script src="Lib/jquery.mobile.custom.min.js"></script>
 	<script src="Lib/moment-2.8.4.min.js"></script>
+
+    <!--<script src="cordova.js"></script>-->
+    <!--<script src="scripts/index.js"></script>-->
+    <!--<script src="plugins/require.js"></script>-->
+    <!--<script src="plugins/org.apache.cordova.media/www/Media.js"></script>-->
 
 	<script src="OvenViewModel.js"></script>
 	<script src="StatusProperties.js"></script>
@@ -29,16 +35,16 @@
 			var ovenViewModel = new OvenViewModel(true, true);
 			ko.applyBindings(ovenViewModel);
 
+			//ovenViewModel.SoundEnabled = false;
 			ovenViewModel.TurnOvenOn();
 
 			//new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
 			//OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
 
-
-			//OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+		    //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
 			//OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
 			//OvenScripts.SetTimerTo1Second(ovenViewModel);
-
+            			
 			//Testing
 
 			//ovenViewModel.IncreaseTimer();
@@ -46,7 +52,34 @@
 			//ovenViewModel.TimerButtonDown();
 
 			//ovenViewModel.ConnectCoreProbe();
-			//ovenViewModel.IncreaseTargetCoreTemperature();
+		    //ovenViewModel.IncreaseTargetCoreTemperature();
+
+
+            //Use jQuery mobile to handle tap and tap hold events
+			$("#btnSteam").bind("taphold", ovenViewModel.SteamButtonTapHold);
+			$("#btnSteam").bind("tap", ovenViewModel.SteamButtonTap);
+
+			$("#btnProgram").bind("taphold", ovenViewModel.ProgramButtonTapHold);
+			$("#btnProgram").bind("tap", ovenViewModel.ProgramButtonTap);
+
+			$("#btnTemp").bind("taphold", ovenViewModel.TempButtonTapHold);
+			$("#btnTemp").bind("tap", ovenViewModel.TempButtonTap);
+
+			$("#btnLightPower").bind("taphold", ovenViewModel.LightPowerButtonTapHold);
+			$("#btnLightPower").bind("tap", ovenViewModel.LightPowerButtonTap);
+
+			$("#btnFan").bind("taphold", ovenViewModel.FanButtonTapHold);
+			$("#btnFan").bind("tap", ovenViewModel.FanButtonTap);
+
+			$("#btnTimer").bind("taphold", ovenViewModel.TimerButtonTapHold);
+			$("#btnTimer").bind("tap", ovenViewModel.TimerButtonTap);
+
+			//$.event.special.tap.tapholdThreshold = 2000;
+		    $.event.special.tap.emitTapOnTaphold = false;
+
+		    //function tapholdHandler(event) {
+		    //    console.log('HOLD');
+		    //}
 		});
 	</script>
 	<title>Moffat Oven Simulator</title>
@@ -57,7 +90,7 @@
 
 <body>
     <div class="dialTemp" data-bind="css: DialTempCss"></div>
-    <div class="btnTemp_Minus" data-bind="event: { mousedown: btnTemp_MinusButtonDown, mouseup: btnTemp_MinusButtonUp, mouseover: btnTemp_MinusOver, mouseout: btnTemp_MinusOut }"></div>
+    <div id="btnTemp_Minus" class="btnTemp_Minus" data-bind="event: { mousedown: btnTemp_MinusButtonDown, mouseup: btnTemp_MinusButtonUp, mouseover: btnTemp_MinusOver, mouseout: btnTemp_MinusOut }"></div>
     <div class="btnTemp_Plus" data-bind="event: { mousedown: btnTemp_PlusButtonDown, mouseup: btnTemp_PlusButtonUp, mouseover: btnTemp_PlusOver, mouseout: btnTemp_PlusOut }"></div>
     <div class="dialTimer" data-bind="css: DialTimerCss"></div>
     <div class="btnTimer_Minus" data-bind="event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }"></div>
@@ -70,11 +103,11 @@
 
 		<div class="ButtonsLeftMargin ButtonsTopMargin">
 			<!--Steam-->
-			<button class="btn" data-bind="event: { mousedown: SteamButtonDown, mouseup: SteamButtonUp, mouseout: ClearMoistureModeTimer }, css: LightOn_Steam() ? 'btnSteam_On' : 'btnSteam_Off'"></button>
+            <button id="btnSteam" class="btn" data-bind="css: LightOn_Steam() ? 'btnSteam_On' : 'btnSteam_Off'"></button>
 			<!--Program-->
-			<button class="btn ButtonLeftMargin" data-bind="event: { mousedown: ProgramButtonDown, mouseup: ProgramButtonUp, mouseout: ClearEditProgramStartTimer }, css: LightOn_Program() ? 'btnProgram_On' : 'btnProgram_Off'"></button>
+            <button id="btnProgram" class="btn ButtonLeftMargin" data-bind="css: LightOn_Program() ? 'btnProgram_On' : 'btnProgram_Off'"></button>
 			<!--Temp-->
-			<button class="btn ButtonLeftMargin" data-bind="click: TempButtonUp, css: LightOn_Temp() ? 'btnTemp_On' : 'btnTemp_Off'"></button>
+            <button id="btnTemp" class="btn ButtonLeftMargin" data-bind="css: LightOn_Temp() ? 'btnTemp_On' : 'btnTemp_Off'"></button>
 		</div>
 	    <div class="TempTopPadding SplitLeftMargin">
             <div style="height: 63px;">
@@ -91,11 +124,11 @@
 		</div>
 		<div class="ButtonsLeftMargin ButtonsTopMargin">
 			<!--LightPowerButton-->
-			<button class="btn" data-bind="event: { mousedown: LightPowerButtonDown, mouseup: LightPowerButtonUp }, css: LightOn_LightPower() ? 'btnLightPower_On' : 'btnLightPower_Off'"></button>
+			<button id="btnLightPower" class="btn" data-bind="css: LightOn_LightPower() ? 'btnLightPower_On' : 'btnLightPower_Off'"></button>
 			<!--Fan-->
-			<button class="btn ButtonLeftMargin" data-bind="click: ButtonClickFan, css: LightOn_Fan() ? 'btnFan_On' : 'btnFan_Off'"></button>
+			<button id="btnFan" class="btn ButtonLeftMargin" data-bind="css: LightOn_Fan() ? 'btnFan_On' : 'btnFan_Off'"></button>
 			<!--Timer-->
-			<button class="btn ButtonLeftMargin" data-bind="event: { mousedown: TimerButtonDown, mouseup: TimerButtonUp }, css: LightOn_Timer() ? 'btnTimer_On' : 'btnTimer_Off'"></button>
+            <button id="btnTimer" class="btn ButtonLeftMargin" data-bind="css: LightOn_Timer() ? 'btnTimer_On' : 'btnTimer_Off'"></button>
 		</div>
 		<div class="TimerTopPadding SplitLeftMargin">
             <div style="height: 63px;">
@@ -126,6 +159,10 @@
 			<button class="btn" data-bind="click: DecreaseTimeDilation">slower</button>
 			<button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
 		</div>
+
+        <!--<div style="padding-bottom: 5px">
+            <button class="btn" data-bind="click: Beep">Beep Test</button>
+        </div>-->
 
 		<!--<label>Set Temperature</label>
 		<input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->

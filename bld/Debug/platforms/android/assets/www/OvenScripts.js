@@ -10,90 +10,90 @@ window.OvenScripts = (function () {
     return {
         Setup3StageProgram_All150WithTime_BackToHome: function (ovenViewModel) {
             //Setup all three stages of a program
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingLongClick();
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTapHold();
+            ovenViewModel.ProgramTap();
 
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTemp_PlusClick(); //Next Stage
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTemp_PlusClick(); //Next Stage
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
 
             //Back to Display Program
-            ovenViewModel.ProgrammingLongClick();
+            ovenViewModel.ProgramTapHold();
             //Back home
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
         },
         Setup3StageProgram_All240WithTime_BackToHome: function (ovenViewModel) {
             //Setup all three stages of a program
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Change to program 2
-            ovenViewModel.btnTemp_PlusClick();
+            ovenViewModel.Temp_PlusClickFunction()();
 
-            ovenViewModel.ProgrammingLongClick();
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTapHold();
+            ovenViewModel.ProgramTap();
 
             //Increase the Temperature x 9
-            for (var i = 0; i < 9; i++) ovenViewModel.btnTemp_PlusClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTemp_PlusClick(); //Next Stage
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTemp_PlusClick(); //Next Stage
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.btnTimer_PlusClick(); //Increase the timer
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
-            ovenViewModel.ProgrammingShortClick();
+            for (var i = 0; i < 9; i++) ovenViewModel.Temp_PlusClickFunction()();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
 
             //Back to Display Program
-            ovenViewModel.ProgrammingLongClick();
+            ovenViewModel.ProgramTapHold();
             //Back home
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
         },
         SetProgram1_1TempToCP: function (ovenViewModel) {
             //Display program
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Edit Program
-            ovenViewModel.ProgrammingLongClick();
+            ovenViewModel.ProgramTapHold();
 
             //Edit Temp on 1.1
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Edit time on 1.1
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Set time to INF
             ovenViewModel.btnTimer_MinusClick(); //Decrease the timer
@@ -103,35 +103,35 @@ window.OvenScripts = (function () {
         },
         SetProgram1To150DegreesAnd5MinutesThenBackToHome: function (ovenViewModel) {
             //Display program
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Edit Program
-            ovenViewModel.ProgrammingLongClick();
+            ovenViewModel.ProgramTapHold();
 
             //Edit Temp on 1.1
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             //Edit time on 1.1
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
 
             for (var i = 0; i < 5; i++) {
-                ovenViewModel.btnTimer_PlusClick(); //Increase the timer
+                ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
             }
 
             //Back to display 1.1
             for (var k = 0; k < 4; k++) {
-                ovenViewModel.ProgrammingShortClick(); //Increase the timer
+                ovenViewModel.ProgramTap(); //Increase the timer
             }
 
             //Display program
-            ovenViewModel.ProgrammingLongClick();
+            ovenViewModel.ProgramTapHold();
 
             //Display home
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
         },
         DisplayProgram1: function (ovenViewModel) {
             //Display program
-            ovenViewModel.ProgrammingShortClick();
+            ovenViewModel.ProgramTap();
         },
         SetActualTemperatureToTarget: function (ovenViewModel) {
             ovenViewModel.SetTemperature(1000); //This just needs to be greater than the target
@@ -151,7 +151,7 @@ window.OvenScripts = (function () {
         SelectProgram1PreHeatAndStart: function (ovenViewModel) {
             OvenScripts.SetActualTemperatureToTarget(ovenViewModel);
 
-            ovenViewModel.ProgrammingShortClick(); //Select P01
+            ovenViewModel.ProgramTap(); //Select P01
 
             ovenViewModel.StartRunningProgram();
         },

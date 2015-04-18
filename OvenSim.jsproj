@@ -137,6 +137,7 @@
     <Content Include="images\D-series-control-panel.png" />
     <Content Include="images\Timer-Knob-2.png" />
     <Content Include="Lib\jquery-2.1.1.min.js" />
+    <Content Include="Lib\jquery.mobile.custom.min.js" />
     <Content Include="Lib\knockout-3.1.0.debug.js" />
     <Content Include="Lib\knockout-3.1.0.js" />
     <Content Include="Lib\moment-2.8.4.min.js" />
@@ -149,7 +150,10 @@
     <Content Include="OvenProgramStage.js" />
     <Content Include="OvenScripts.js" />
     <Content Include="OvenViewModel.js" />
+    <Content Include="packages.config" />
     <Content Include="Project_Readme.html" />
+    <Content Include="scripts\r.js" />
+    <Content Include="scripts\require.js" />
     <Content Include="SoundManagement.js" />
     <Content Include="Sounds\beep1.mp3" />
     <Content Include="StatusProperties.js" />
@@ -165,6 +169,21 @@
     </Content>
     <Content Include="Subscriptions.js" />
     <Content Include="TemperatureManagement.js" />
+    <Content Include="Tests\lib\jasmine-2.1.3\boot.js" />
+    <Content Include="Tests\lib\jasmine-2.1.3\console.js" />
+    <Content Include="Tests\lib\jasmine-2.1.3\jasmine-html.js" />
+    <Content Include="Tests\lib\jasmine-2.1.3\jasmine.css" />
+    <Content Include="Tests\lib\jasmine-2.1.3\jasmine.js" />
+    <Content Include="Tests\lib\jasmine-2.1.3\jasmine_favicon.png" />
+    <Content Include="Tests\SpecRunner.html" />
+    <Content Include="Tests\spec\ManaulMode.Spec.js" />
+    <Content Include="Tests\spec\OvenProgramFactory.Spec.js" />
+    <Content Include="Tests\spec\OvenProgramStage.Spec.js" />
+    <Content Include="Tests\spec\Power.Spec.js" />
+    <Content Include="Tests\spec\ProgramSelection.Spec.js" />
+    <Content Include="Tests\spec\Timer.CountUp.Spec.js" />
+    <Content Include="Tests\src\Player.js" />
+    <Content Include="Tests\src\Song.js" />
     <Content Include="TimerManagement.js" />
     <Content Include="Timers.js" />
     <Content Include="UserInterface.js" />
@@ -172,6 +191,7 @@
     <Content Include="merges\windows\scripts\platformOverrides.js" />
     <Content Include="merges\windows\scripts\winstore-jscompat.js" />
     <Folder Include="merges\wp8\" />
+    <Folder Include="plugins\" />
     <Folder Include="res\icons\android\" />
     <Folder Include="res\icons\ios\" />
     <Folder Include="res\icons\wp8\" />

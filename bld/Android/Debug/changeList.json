@@ -1,27 +1,20 @@
 {
   "changedFilesIos": [
     "index.html",
-    "ovenviewmodel.js",
-    "images\\D-series-control-panel.png",
-    "style.less",
-    "style.css",
-    "style.css.map",
-    "style.min.css",
-    "images\\btnTimer_Minus.png",
-    "images\\btnTemp_Minus.png",
-    "images\\btnTemp_Plus.png",
-    "images\\btnTimer_Plus.png",
-    "userinterface.js"
+    "SoundManagement.js",
+    "OvenScripts.js",
+    "OvenProgramManagement.js",
+    "UserInterface.js"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
     "index.html",
-    "userinterface.js",
-    "style.less",
-    "style.css",
-    "style.min.css"
+    "SoundManagement.js",
+    "OvenScripts.js",
+    "OvenProgramManagement.js",
+    "UserInterface.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

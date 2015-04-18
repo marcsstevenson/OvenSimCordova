@@ -2,16 +2,16 @@
 
 function UserInterface(self) {
     //Steam
-    self.SteamButtonDown = function () {
+    self.SteamButtonTap = function () {
         if (!self.OvenIsOn()) return;
 
-        self.SteamDown();
+        self.SteamTap();
     };
 
-    self.SteamButtonUp = function () {
+    self.SteamButtonTapHold = function () {
         if (!self.OvenIsOn()) return;
 
-        self.SteamUp();
+        self.SteamTapHold();
     };
 
     self.LightOn_Steam = ko.computed(function () {
@@ -24,18 +24,18 @@ function UserInterface(self) {
     });
 
     //Program
-    self.ProgramButtonUp = function () {
+    self.ProgramButtonTap = function () {
         if (!self.OvenIsOn()) return;
 
-        self.ProgramUp();
+        self.ProgramTap();
     };
 
-    self.ProgramButtonDown = function () {
+    self.ProgramButtonTapHold = function () {
         if (!self.OvenIsOn()) return;
 
-        self.ProgramDown();
+        self.ProgramTapHold();
     };
-
+    
     self.LightOn_Program = ko.computed(function () {
         if (!self.OvenIsOn()) return false; //The oven is off
 
@@ -49,12 +49,18 @@ function UserInterface(self) {
     });
     
     //Temp
-    self.TempButtonUp = function () {
-        if (!self.OvenIsOn() || !self.TempButtonUpFunction()) return;
+    self.TempButtonTap = function () {
+        if (!self.OvenIsOn() || !self.TempButtonTapFunction()) return;
 
-        self.TempButtonUpFunction()();
+        self.TempButtonTapFunction()();
     };
 
+    self.TempButtonTapHold = function () {
+        if (!self.OvenIsOn()) return;
+
+        //Not used
+    };
+    
     self.LightOn_Temp = ko.computed(function () {
         if (!self.OvenIsOn()) return false; //The oven is off
         
@@ -69,12 +75,12 @@ function UserInterface(self) {
     });
 
     //LightPower
-    self.LightPowerButtonDown = function () {
-        self.LightPowerDown();
+    self.LightPowerButtonTap = function () {
+        self.LightPowerTap();
     };
 
-    self.LightPowerButtonUp = function () {
-        self.LightPowerUp();
+    self.LightPowerButtonTapHold = function () {       
+        self.LightPowerTapHold();
     };
 
     self.LightOn_LightPower = ko.computed(function () {
@@ -87,10 +93,16 @@ function UserInterface(self) {
     });
 
     //Fan
-    self.ButtonClickFan = function () {
+    self.FanButtonTap = function () {
         if (!self.OvenIsOn()) return;
 
         self.DisplayingProgramStage().ToggleFanValue();
+    };
+
+    self.FanButtonTapHold = function () {
+        if (!self.OvenIsOn()) return;
+
+        //Not used
     };
 
     self.LightOn_Fan = ko.computed(function () {
@@ -103,16 +115,28 @@ function UserInterface(self) {
     });
 
     //Timer
-    self.TimerButtonDown = function () {
-        if (!self.OvenIsOn() || !self.TimerButtonDownFunction()) return;
+    //self.TimerButtonDown = function () {
+    //    if (!self.OvenIsOn() || !self.TimerButtonDownFunction()) return;
 
-        self.TimerButtonDownFunction()();
+    //    self.TimerButtonDownFunction()();
+    //};
+
+    //self.TimerButtonUp = function () {
+    //    if (!self.OvenIsOn() || !self.TimerButtonUpFunction()) return;
+
+    //    self.TimerButtonUpFunction()();
+    //};
+
+    self.TimerButtonTap = function () {
+        if (!self.OvenIsOn() || !self.TimerButtonTapFunction()) return;
+
+        self.TimerButtonTapFunction()();
     };
 
-    self.TimerButtonUp = function () {
-        if (!self.OvenIsOn() || !self.TimerButtonUpFunction()) return;
+    self.TimerButtonTapHold = function () {
+        if (!self.OvenIsOn() || !self.TimerButtonTapHoldFunction()) return;
 
-        self.TimerButtonUpFunction()();
+        self.TimerButtonTapHoldFunction()();
     };
 
     self.LightOn_Timer = ko.computed(function () {
@@ -221,8 +245,8 @@ function UserInterface(self) {
         return self.TopDisplayFunction() ? self.TopDisplayFunction()() : '';
     });
 
-    self.BottomDisplay = ko.computed(function () {
-        if (!self.OvenIsOn() || (self.BottomDisplayIsBlinking() && !self.MasterBlinkOn() && !self.OvenIsOn()))
+    self.BottomDisplay = ko.computed(function () {    
+        if (!self.OvenIsOn() || (self.BottomDisplayIsBlinking() && !self.MasterBlinkOn()))
             return ''; //The oven or the blink is off
 
         return self.BottomDisplayFunction() ? self.BottomDisplayFunction()() : '';
