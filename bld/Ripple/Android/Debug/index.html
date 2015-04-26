@@ -30,58 +30,61 @@
 	<script src="OvenProgramStage.js"></script>
 	<script src="OvenScripts.js"></script>
 
-	<script>
-		$(document).ready(function () {
-			var ovenViewModel = new OvenViewModel(true, true);
-			ko.applyBindings(ovenViewModel);
+    <script>
+        $(document).ready(function() {
 
-			//ovenViewModel.SoundEnabled = false;
-			ovenViewModel.TurnOvenOn();
 
-			//new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
-			//OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
+            var ovenViewModel = new OvenViewModel(true, true);
+            ko.applyBindings(ovenViewModel);
 
-		    //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
-			//OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
-			//OvenScripts.SetTimerTo1Second(ovenViewModel);
-            			
-			//Testing
+            //ovenViewModel.SoundEnabled = false;
+            ovenViewModel.TurnOvenOn();
 
-			//ovenViewModel.IncreaseTimer();
+            //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
+            //OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
 
-			//ovenViewModel.TimerButtonDown();
+            //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+            //OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
+            //OvenScripts.SetTimerTo1Second(ovenViewModel);
 
-			//ovenViewModel.ConnectCoreProbe();
-		    //ovenViewModel.IncreaseTargetCoreTemperature();
+            //Testing
+
+            //ovenViewModel.IncreaseTimer();
+
+            //ovenViewModel.TimerButtonDown();
+
+            //ovenViewModel.ConnectCoreProbe();
+            //ovenViewModel.IncreaseTargetCoreTemperature();
 
 
             //Use jQuery mobile to handle tap and tap hold events
-			$("#btnSteam").bind("taphold", ovenViewModel.SteamButtonTapHold);
-			$("#btnSteam").bind("tap", ovenViewModel.SteamButtonTap);
+            $("#btnSteam").bind("taphold", ovenViewModel.SteamButtonTapHold);
+            $("#btnSteam").bind("tap", ovenViewModel.SteamButtonTap);
 
-			$("#btnProgram").bind("taphold", ovenViewModel.ProgramButtonTapHold);
-			$("#btnProgram").bind("tap", ovenViewModel.ProgramButtonTap);
+            $("#btnProgram").bind("taphold", ovenViewModel.ProgramButtonTapHold);
+            $("#btnProgram").bind("tap", ovenViewModel.ProgramButtonTap);
 
-			$("#btnTemp").bind("taphold", ovenViewModel.TempButtonTapHold);
-			$("#btnTemp").bind("tap", ovenViewModel.TempButtonTap);
+            $("#btnTemp").bind("taphold", ovenViewModel.TempButtonTapHold);
+            $("#btnTemp").bind("tap", ovenViewModel.TempButtonTap);
 
-			$("#btnLightPower").bind("taphold", ovenViewModel.LightPowerButtonTapHold);
-			$("#btnLightPower").bind("tap", ovenViewModel.LightPowerButtonTap);
+            $("#btnLightPower").bind("taphold", ovenViewModel.LightPowerButtonTapHold);
+            $("#btnLightPower").bind("tap", ovenViewModel.LightPowerButtonTap);
 
-			$("#btnFan").bind("taphold", ovenViewModel.FanButtonTapHold);
-			$("#btnFan").bind("tap", ovenViewModel.FanButtonTap);
+            $("#btnFan").bind("taphold", ovenViewModel.FanButtonTapHold);
+            $("#btnFan").bind("tap", ovenViewModel.FanButtonTap);
 
-			$("#btnTimer").bind("taphold", ovenViewModel.TimerButtonTapHold);
-			$("#btnTimer").bind("tap", ovenViewModel.TimerButtonTap);
+            $("#btnTimer").bind("taphold", ovenViewModel.TimerButtonTapHold);
+            $("#btnTimer").bind("tap", ovenViewModel.TimerButtonTap);
 
-			//$.event.special.tap.tapholdThreshold = 2000;
-		    $.event.special.tap.emitTapOnTaphold = false;
+            //$.event.special.tap.tapholdThreshold = 2000;
+            $.event.special.tap.emitTapOnTaphold = false;
 
-		    //function tapholdHandler(event) {
-		    //    console.log('HOLD');
-		    //}
-		});
-	</script>
+            //function tapholdHandler(event) {
+            //    console.log('HOLD');
+            //}
+        });
+    </script>
+    <script src="app.js"></script>
 	<title>Moffat Oven Simulator</title>
 	<link type="text/css" href="style.css" rel="stylesheet">
 	<style>
@@ -160,9 +163,9 @@
 			<button class="btn" data-bind="click: IncreaseTimeDilation">faster</button>
 		</div>
 
-        <!--<div style="padding-bottom: 5px">
+        <div style="padding-bottom: 5px">
             <button class="btn" data-bind="click: Beep">Beep Test</button>
-        </div>-->
+        </div>
 
 		<!--<label>Set Temperature</label>
 		<input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->

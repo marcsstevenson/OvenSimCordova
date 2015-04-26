@@ -9,5 +9,7 @@
   <preference name="windows-phone-target-version" value="8.1" />
   <preference name="Orientation" value="portrait" />
   <preference name="InAppBrowserStorageEnabled" value="False" />
+  <vs:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+  <vs:plugin name="org.apache.cordova.media" version="0.2.13" />
   <vs:platformSpecificValues />
 </widget>
