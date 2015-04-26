@@ -31,6 +31,11 @@ body {
   width: 296px;
   background-image: url('images/D-series-control-panel.png');
 }
+.controlPanelSmall {
+  height: 646px;
+  width: 296px;
+  background-color: #231f20;
+}
 .btn {
   width: 46px;
   height: 46px;
@@ -89,6 +94,28 @@ body {
   float: left;
   z-index: 100;
 }
+.btnTemp_PlusMinus {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+}
+.btnTemp_MinusBase {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTemp_Minus.png');
+  left: 74px;
+}
 .btnTemp_Minus {
   width: 81px;
   height: 174px;
@@ -97,10 +124,35 @@ body {
   padding: 0;
   float: left;
   z-index: 100;
-  background-image: url('images/btnTemp_Minus.png');
-  /*background-color: cyan;*/
   position: absolute;
+  background-image: url('images/btnTemp_Minus.png');
   left: 74px;
+  top: 286px;
+}
+.btnTemp_MinusSmall {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTemp_Minus.png');
+  left: 74px;
+  top: 161px;
+}
+.btnTemp_PlusBase {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTemp_Plus.png');
+  left: 155px;
   top: 286px;
 }
 .btnTemp_Plus {
@@ -111,11 +163,46 @@ body {
   padding: 0;
   float: left;
   z-index: 100;
-  background-image: url('images/btnTemp_Plus.png');
-  /*background-color: red;*/
   position: absolute;
+  background-image: url('images/btnTemp_Plus.png');
   left: 155px;
   top: 286px;
+}
+.btnTemp_PlusSmall {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTemp_Plus.png');
+  left: 155px;
+  top: 286px;
+  top: 161px;
+}
+.btnTimer_PlusMinus {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+}
+.btnTimer_MinusBase {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTimer_Minus.png');
+  left: 74px;
 }
 .btnTimer_Minus {
   width: 81px;
@@ -125,12 +212,36 @@ body {
   padding: 0;
   float: left;
   z-index: 100;
-  background-image: url('images/btnTimer_Minus.png');
-  /*background-color: cyan;*/
-  z-index: 200;
   position: absolute;
+  background-image: url('images/btnTimer_Minus.png');
   left: 74px;
   top: 692px;
+}
+.btnTimer_MinusSmall {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTimer_Minus.png');
+  left: 74px;
+  top: 477px;
+}
+.btnTimer_PlusBase {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTimer_Plus.png');
+  left: 155px;
+  top: 286px;
 }
 .btnTimer_Plus {
   width: 81px;
@@ -140,10 +251,25 @@ body {
   padding: 0;
   float: left;
   z-index: 100;
-  background-image: url('images/btnTimer_Plus.png');
   position: absolute;
+  background-image: url('images/btnTimer_Plus.png');
   left: 155px;
+  top: 286px;
   top: 692px;
+}
+.btnTimer_PlusSmall {
+  width: 81px;
+  height: 174px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  position: absolute;
+  background-image: url('images/btnTimer_Plus.png');
+  left: 155px;
+  top: 286px;
+  top: 477px;
 }
 .dial {
   width: 136px;
@@ -177,6 +303,16 @@ body {
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
 }
+.dialTempBase {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
+}
 .dialTemp {
   width: 136px;
   height: 136px;
@@ -187,6 +323,27 @@ body {
   position: absolute;
   left: 88px;
   top: 324px;
+}
+.dialTempSmall {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
+  top: 199px;
+}
+.dialTimerBase {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
 }
 .dialTimer {
   width: 136px;
@@ -199,9 +356,36 @@ body {
   left: 88px;
   top: 730px;
 }
+.dialTimerSmall {
+  width: 136px;
+  height: 136px;
+  border: none;
+  background-image: url('images/Timer-Knob-2.png');
+  /*background-color: yellow;*/
+  z-index: 1;
+  position: absolute;
+  left: 88px;
+  top: 515px;
+}
+/*.dialTimer {
+    .dial;
+    position: absolute;
+    left: 88px;
+    top: 605px;
+}
+
+.dialTimerSmall {
+    .dial;
+    position: absolute;
+    left: 88px;
+    top: 605px;
+}*/
 /*Layout*/
 .TopPadding {
   padding-top: 143px;
+}
+.TopPaddingSmall {
+  padding-top: 18px;
 }
 .DisplayLeftMargin {
   margin-left: 65px;
@@ -223,6 +407,9 @@ body {
 }
 .BottomDisplayTopMargin {
   margin-top: 208px;
+}
+.BottomDisplayTopMarginSmall {
+  margin-top: 118px;
 }
 .TimerTopPadding {
   padding-top: 3px;

@@ -1,14 +1,17 @@
 {
   "changedFilesIos": [
-    "soundmanagement.js",
-    "app.js"
+    "index.html",
+    "UserInterface.js",
+    "style.less",
+    "style.css",
+    "style.css.map",
+    "style.min.css",
+    "images\\D-series-control-panel-SMALL.png"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [
-    "soundmanagement.js"
-  ],
+  "changedFiles": [],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

@@ -134,6 +134,7 @@
     <Content Include="images\btnTimer_Off.png" />
     <Content Include="images\btnTimer_On.png" />
     <Content Include="images\btnTimer_Plus.png" />
+    <Content Include="images\D-series-control-panel-SMALL.png" />
     <Content Include="images\D-series-control-panel.png" />
     <Content Include="images\Timer-Knob-2.png" />
     <Content Include="Lib\jquery-2.1.1.min.js" />

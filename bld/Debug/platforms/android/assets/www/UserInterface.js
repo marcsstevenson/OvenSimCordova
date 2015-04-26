@@ -325,4 +325,18 @@ function UserInterface(self) {
 
         return duration.minutes() + ':' + (duration.seconds() < 10 ? '0' : '') + duration.seconds();
     };
+
+    self.ClientHeight = ko.computed(function () {
+        return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    });
+
+    self.UseSmallClientToggle = function() {
+        self.UseSmallClient(!self.UseSmallClient());
+    };
+
+    self.UseSmallClient = ko.observable(self.ClientHeight() < 1000);
+
+    //self.UseSmallClient = ko.computed(function () {
+    //    return self.ClientHeight() < 1000;
+    //});
 }

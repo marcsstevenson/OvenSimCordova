@@ -1,4 +1,9 @@
-﻿@font-face {
+﻿@SmallReduxTop: 125;
+@SmallReduxBottom: 215;
+@DialTempTop: 324px;
+@DialTimerTop: 730px;
+
+@font-face {
     font-family: 'ds-digitalitalic';
     src: url('fonts/DS-Digital/ds-digii-webfont.eot');
     src: url('fonts/DS-Digital/ds-digii-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/DS-Digital/ds-digii-webfont.woff2') format('woff2'), url('fonts/DS-Digital/ds-digii-webfont.woff') format('woff'), url('fonts/DS-Digital/ds-digii-webfont.ttf') format('truetype'), url('fonts/DS-Digital/ds-digii-webfont.svg#ds-digitalitalic') format('svg');
@@ -33,6 +38,12 @@ body {
     height: 1000px;
     width: 296px;
     background-image: url('images/D-series-control-panel.png');
+}
+
+.controlPanelSmall {
+    height: 646px;
+    width: 296px;
+    background-color: #231f20;    
 }
 
 .btn {
@@ -109,45 +120,84 @@ body {
     z-index: 100;
 }
 
-.btnTemp_Minus {
+@TempPlusMinusTop: 286px;
+
+.btnTemp_PlusMinus {
     .btnSplit;
-    background-image: url('images/btnTemp_Minus.png');
-    /*background-color: cyan;*/
     position: absolute;
+}
+
+.btnTemp_MinusBase {
+    .btnTemp_PlusMinus;
+    background-image: url('images/btnTemp_Minus.png');
     left: 74px;
+}
+
+.btnTemp_Minus {
+    .btnTemp_MinusBase;
+    top: @TempPlusMinusTop;
+}
+
+.btnTemp_MinusSmall {
+    .btnTemp_MinusBase;
+    top: @TempPlusMinusTop - @SmallReduxTop;
+}
+
+.btnTemp_PlusBase {
+    .btnTemp_PlusMinus;
+    background-image: url('images/btnTemp_Plus.png');
+    left: 155px;
     top: 286px;
 }
 
 .btnTemp_Plus {
+    .btnTemp_PlusBase;
+    top: @TempPlusMinusTop;
+}
+.btnTemp_PlusSmall {
+    .btnTemp_PlusBase;
+    top: @TempPlusMinusTop - @SmallReduxTop;
+}
+
+
+
+@TimerPlusMinusTop: 692px;
+
+.btnTimer_PlusMinus {
     .btnSplit;
-    background-image: url('images/btnTemp_Plus.png');
-    /*background-color: red;*/
-    
     position: absolute;
+}
+
+.btnTimer_MinusBase {
+    .btnTimer_PlusMinus;
+    background-image: url('images/btnTimer_Minus.png');
+    left: 74px;
+}
+
+.btnTimer_Minus {
+    .btnTimer_MinusBase;
+    top: @TimerPlusMinusTop;
+}
+
+.btnTimer_MinusSmall {
+    .btnTimer_MinusBase;
+    top: @TimerPlusMinusTop - @SmallReduxBottom;
+}
+
+.btnTimer_PlusBase {
+    .btnTimer_PlusMinus;
+    background-image: url('images/btnTimer_Plus.png');
     left: 155px;
     top: 286px;
 }
 
-.btnTimer_Minus {
-    .btnSplit;
-    background-image: url('images/btnTimer_Minus.png');
-    
-    /*background-color: cyan;*/
-    z-index: 200;
-
-    position: absolute;
-    
-    left: 74px;
-    top: 692px;
-}
-
 .btnTimer_Plus {
-    .btnSplit;
-    background-image: url('images/btnTimer_Plus.png');
-    
-    position: absolute;
-    left: 155px;
-    top: 692px;
+    .btnTimer_PlusBase;
+    top: @TimerPlusMinusTop;
+}
+.btnTimer_PlusSmall {
+    .btnTimer_PlusBase;
+    top: @TimerPlusMinusTop - @SmallReduxBottom;
 }
 
 .dial {
@@ -183,23 +233,59 @@ body {
     transition: 0.1s ease-in-out;
 }
 
-.dialTemp {
+.dialTempBase {
     .dial;
     position: absolute;
     left: 88px;
-    top: 324px;
+}
+
+.dialTemp {
+    .dialTempBase;
+    top: @DialTempTop;
+}
+
+.dialTempSmall {
+    .dialTempBase;
+    top: @DialTempTop - @SmallReduxTop;
+}
+
+.dialTimerBase {
+    .dial;
+    position: absolute;
+    left: 88px;
 }
 
 .dialTimer {
+    .dialTimerBase;
+    top: @DialTimerTop;
+}
+
+.dialTimerSmall {
+    .dialTimerBase;
+    top: @DialTimerTop - @SmallReduxBottom;
+}
+
+/*.dialTimer {
     .dial;
     position: absolute;
     left: 88px;
-    top: 730px;
+    top: 605px;
 }
+
+.dialTimerSmall {
+    .dial;
+    position: absolute;
+    left: 88px;
+    top: 605px;
+}*/
 
 /*Layout*/
 .TopPadding {
     padding-top: 143px;
+}
+
+.TopPaddingSmall {
+    padding-top: 18px;
 }
 
 .DisplayLeftMargin {
@@ -228,6 +314,10 @@ body {
 
 .BottomDisplayTopMargin {
     margin-top: 208px;
+}
+
+.BottomDisplayTopMarginSmall {
+    margin-top: 118px;
 }
 
 .TimerTopPadding {

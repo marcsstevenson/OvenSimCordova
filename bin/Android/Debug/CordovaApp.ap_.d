@@ -95,6 +95,7 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\i
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\btnTimer_On.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\btnTimer_Plus.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\D-series-control-panel - Copy.png \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\D-series-control-panel-SMALL.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\D-series-control-panel.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images\Timer-Knob-2.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Lib\jquery-2.1.1.min.js \
