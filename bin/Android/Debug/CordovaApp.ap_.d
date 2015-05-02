@@ -38,7 +38,6 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\f
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\images \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\index.html \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Lib \
-E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\npm-debug.log \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\OvenManager.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\OvenProgram.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\OvenProgramFactory.js \
@@ -161,6 +160,7 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\T
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\lib\jasmine-2.1.3\jasmine.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\lib\jasmine-2.1.3\jasmine_favicon.png \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\ManaulMode.Spec.js \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\OvenLight.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\OvenProgramFactory.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\OvenProgramStage.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\Power.Spec.js \

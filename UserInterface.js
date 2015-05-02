@@ -20,7 +20,8 @@ function UserInterface(self) {
         if (self.SteamButtonIsBlinking() && !self.MasterBlinkOn())
             return false; //The blink is off
 
-        return self.MoistureModeOn() || self.DisplayingMoistureSetup() || self.SteamShooting();
+        return self.GetSteamLightIsOn();
+        //return self.MoistureModeOn() || self.DisplayingMoistureSetup() || self.SteamShooting();
     });
 
     //Program
@@ -113,20 +114,7 @@ function UserInterface(self) {
 
         return self.DisplayingProgramStage().IsFanLow();
     });
-
-    //Timer
-    //self.TimerButtonDown = function () {
-    //    if (!self.OvenIsOn() || !self.TimerButtonDownFunction()) return;
-
-    //    self.TimerButtonDownFunction()();
-    //};
-
-    //self.TimerButtonUp = function () {
-    //    if (!self.OvenIsOn() || !self.TimerButtonUpFunction()) return;
-
-    //    self.TimerButtonUpFunction()();
-    //};
-
+    
     self.TimerButtonTap = function () {
         if (!self.OvenIsOn() || !self.TimerButtonTapFunction()) return;
 

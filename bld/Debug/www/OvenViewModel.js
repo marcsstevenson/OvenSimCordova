@@ -27,21 +27,6 @@ function OvenViewModel(soundEnabled, blinkingEnabled) {
     UserInterface(self);
     Subscriptions(self);
 
-    self.ToggleLight = function () {
-        self.LightIsOn(!self.LightIsOn());
-    }
-
-    self.TurnOvenOn = function () {
-        self.TopDisplayFunction(self.TargetTemperature);
-        self.OvenIsOn(true);
-    }
-
-    self.TurnOvenOff = function () {
-        //Turn everything off
-        self.SetDefaults();
-        self.TopDisplayFunction(null);
-    }
-    
     //Time Dilation - Start
 
     self.IncreaseTimeDilation = function () {

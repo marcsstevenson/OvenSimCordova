@@ -131,6 +131,12 @@ describe("ProgramSelection", function () {
                         expect(ovenViewModel.BottomDisplayIsBlinking()).not.toBeTruthy();
                     });
 
+                    it("long tap on the program button shall return the user to program display", function () {
+                        ovenViewModel.ProgramTapHold();
+                        var display = ovenViewModel.TopDisplay();
+                        expect(display).toEqual('P02');
+                    });
+
                     describe("On ProgramTap", function () {
                         beforeEach(function () {
                             //Set to timer edit
@@ -176,8 +182,7 @@ describe("ProgramSelection", function () {
                                 });
                             });
                         });
-
-
+                        
                         //TODO - expand for the other values, timer etc
                     });
                 });

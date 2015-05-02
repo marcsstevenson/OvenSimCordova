@@ -1,18 +1,40 @@
 {
   "changedFilesIos": [
     "index.html",
+    "OvenScripts.js",
     "UserInterface.js",
-    "style.less",
-    "style.css",
-    "style.css.map",
-    "style.min.css",
-    "images\\D-series-control-panel-SMALL.png"
+    "TimerManagement.js",
+    "SoundManagement.js",
+    "OvenProgramManagement.js",
+    "Tests\\spec\\ProgramSelection.Spec.js",
+    "OvenViewModel.js",
+    "OvenManager.js",
+    "Tests\\spec\\Power.Spec.js",
+    "Tests\\spec\\OvenLight.Spec.js",
+    "OvenProgramStage.js"
   ],
-  "deletedFilesIos": [],
+  "deletedFilesIos": [
+    "Tests\\spec\\Power.Spec - Copy.js"
+  ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
-  "deletedFiles": [],
+  "changedFiles": [
+    "index.html",
+    "OvenScripts.js",
+    "UserInterface.js",
+    "TimerManagement.js",
+    "SoundManagement.js",
+    "OvenProgramManagement.js",
+    "Tests\\spec\\ProgramSelection.Spec.js",
+    "OvenViewModel.js",
+    "OvenManager.js",
+    "Tests\\spec\\Power.Spec.js",
+    "Tests\\spec\\OvenLight.Spec.js",
+    "OvenProgramStage.js"
+  ],
+  "deletedFiles": [
+    "Tests\\spec\\Power.Spec - Copy.js"
+  ],
   "addedPlugins": [],
   "deletedPlugins": []
 }

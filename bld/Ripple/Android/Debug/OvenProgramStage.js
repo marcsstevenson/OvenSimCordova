@@ -113,7 +113,7 @@ function OvenProgramStage(isManualModeStep) {
 
     //*** Temperature Setting - End
 
-    //*** Core Temperature SEtting - Start
+    //*** Core Temperature Setting - Start
 
     self.DecreaseTargetCoreTemperature = function () {
         self.SetTargetCoreTemperature(self.TargetCoreTemperature() - 1);
@@ -142,7 +142,7 @@ function OvenProgramStage(isManualModeStep) {
         self.TargetCoreTemperature(newValue);
     };
 
-    //*** Core Temperature SEtting - End
+    //*** Core Temperature Setting - End
 
     //*** Timer Section - Start
 
@@ -161,13 +161,21 @@ function OvenProgramStage(isManualModeStep) {
     self.DecreaseTimer = function () {
         self.IsOnValue(true); //Always set to on when this value changes
 
-        if (self.TimerStartValue() === (self.IsManualModeStep() ? -1 : -2)) {
+        if (self.TimerStartValue() === (self.IsManualModeStep() ? -1 : -2)) { //(-2 = CP, -1 = InF)
             self.TimerStartValue(180);
             return; //We were at the min
         }
 
         self.TimerStartValue(self.TimerStartValue() - 1);
     };
+
+    self.TimerIsSetToCoreProbe = ko.computed(function() {
+        return self.TimerStartValue() === -2;
+    });
+
+    self.TimerIsSetToInfinite = ko.computed(function () {
+        return self.TimerStartValue() === -1;
+    });
 
     //*** Timer Section - End
 
@@ -180,6 +188,18 @@ function OvenProgramStage(isManualModeStep) {
     self.MoistureModeUp = function () {
         self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 0 : self.CurrentMoistureMode() + 1);
     };
+
+    self.MoistureIsAuto = ko.computed(function () {
+        //0 is Manual
+        //1-5 are auto-shots
+        return self.CurrentMoistureMode() > 0;
+    });
+
+    self.MoistureIsManual = ko.computed(function () {
+        //0 is Manual
+        //1-5 are auto-shots
+        return self.CurrentMoistureMode() === 0;
+    });
 
     //*** Moisture mode - end
 

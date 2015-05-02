@@ -14,7 +14,11 @@ describe("Oven", function () {
     it("The oven shall have 20 programs to use", function () {
         expect(ovenViewModel.OvenPrograms().length).toEqual(20);
     });
-    
+
+    it("The oven shall not be heating", function () {
+        expect(ovenViewModel.IsHeating()).toEqual(false);
+    });
+
     describe("when TurnOvenOn", function () {
         beforeEach(function () {
             ovenViewModel.TurnOvenOn();
@@ -34,6 +38,10 @@ describe("Oven", function () {
             var topDisplayValue = ovenViewModel.BottomDisplayFunction()();
 
             expect(topDisplayValue).toEqual('---');
+        });
+
+        it("The oven shall be heating", function () {
+            expect(ovenViewModel.IsHeating()).toEqual(true);
         });
     });
 });

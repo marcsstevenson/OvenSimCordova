@@ -155,6 +155,14 @@ window.OvenScripts = (function () {
 
             ovenViewModel.StartRunningProgram();
         },
+        StartTimerSet1SecondBeforeEnd: function (ovenViewModel) {
+            ovenViewModel.btnTimer_PlusButtonDown(); //Set timer to 1:00
+            ovenViewModel.btnTimer_PlusButtonUp();
+            ovenViewModel.TimerButtonTap(); //Start timer
+
+            var duration = moment.duration(1, 'seconds');
+            ovenViewModel.DisplayingProgramStage().TimerCurrentValue(duration);
+        },
         SetTimerTo1Second: function (ovenViewModel) {
             var duration = moment.duration(1, 'seconds');
             ovenViewModel.DisplayingProgramStage().TimerCurrentValue(duration);

@@ -260,6 +260,7 @@
     <Content Include="Tests\spec\ManaulMode.Spec.js" />
     <Content Include="Tests\spec\OvenProgramFactory.Spec.js" />
     <Content Include="Tests\spec\OvenProgramStage.Spec.js" />
+    <Content Include="Tests\spec\OvenLight.Spec.js" />
     <Content Include="Tests\spec\Power.Spec.js" />
     <Content Include="Tests\spec\ProgramSelection.Spec.js" />
     <Content Include="Tests\spec\Timer.CountUp.Spec.js" />

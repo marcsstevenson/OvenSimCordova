@@ -46,7 +46,7 @@ function OvenProgramManagement(self) {
         else if (self.ProgrammingArea() === 2)
             self.SetProgrammingArea(1); //From edit back to display
         else if (self.ProgrammingArea() === 3)
-            self.NextEditProgramStageValue(1); //From edit stage values back to display
+            self.SetProgrammingArea(1); //From edit back to display
     };
 
     self.SetForDisplayProgramTargetTemperature = function () {
@@ -332,6 +332,13 @@ function OvenProgramManagement(self) {
 
         if (newIndex > self.EditingOvenProgram().OvenProgramStages().length - 1) return; //It doesn't loop
         if (newIndex > lastOnProgramStage.Index() + 1) return; //We cannot move one past the last on stage
+
+        //We cannot move past the lastOnProgramStage if it has a timer set to INF
+        if (delta === 1 && lastOnProgramStage.TimerIsSetToInfinite()) {
+            alert("The current stage is set to an unlimited cook time (InF) - so there cannot be a next stage");
+
+            return;
+        }
 
         self.ChangeDisplayProgramStageIndex(newIndex);
     }
