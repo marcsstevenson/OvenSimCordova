@@ -2,14 +2,17 @@
 /// <reference path="../lib/jasmine-2.1.3/jasmine.js" />
 /// <reference path="../../Lib/jquery-2.1.1.min.js" />
 /// <reference path="../../OvenProgramFactory.js" />
+/// <reference path="../../TemperatureConfigFactory.js" />
+/// <reference path="../../TemperatureConfig.js" />
 
 describe("OvenProgramFactory", function () {
     var ovenProgramFactory;
     var testOvenPrograms;
 
     beforeEach(function () {
+        var celsiusConfigs = new TemperatureConfigFactory().BuildCelsius();
         ovenProgramFactory = new OvenProgramFactory();
-        testOvenPrograms = ovenProgramFactory.BuildEmptyOvenPrograms();
+        testOvenPrograms = ovenProgramFactory.BuildEmptyOvenPrograms(celsiusConfigs);
     });
     
     describe("BuildEmptyOvenPrograms", function () {

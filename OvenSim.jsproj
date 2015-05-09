@@ -146,6 +146,8 @@
     <Content Include="merges\android\scripts\platformOverrides.js" />
     <Content Include="OvenManager.js" />
     <Content Include="OvenProgram.js" />
+    <Content Include="TemperatureConfig.js" />
+    <Content Include="TemperatureConfigFactory.js" />
     <Content Include="OvenProgramFactory.js" />
     <Content Include="OvenProgramManagement.js" />
     <Content Include="OvenProgramStage.js" />

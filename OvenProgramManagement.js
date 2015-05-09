@@ -83,6 +83,9 @@ function OvenProgramManagement(self) {
             self.SetDefaults_TimerUi();
             self.DisplayingProgramStage(self.ManualModeProgramStage());
             self.IsManualMode(true);
+
+            self.TopDisplayIsBlinking(false);
+            self.BottomDisplayIsBlinking(false);
         } else if (value === 1) {
             //Display Program
             
@@ -105,6 +108,9 @@ function OvenProgramManagement(self) {
             self.ChangeDisplayProgramStageIndex(0);
 
             self.IsManualMode(false);
+
+            self.TopDisplayIsBlinking(false);
+            self.BottomDisplayIsBlinking(false);
         } else if (value === 2) {
             //Edit Program
 
@@ -157,11 +163,6 @@ function OvenProgramManagement(self) {
             self.BottomDisplayIsBlinking(false);
         }
         else if (programStage.EditingIndex() === 0) {
-
-            //console.clear();
-            //console.log(self.EditingOvenProgramStage());
-            //console.log(self.ManualModeProgramStage());
-
             // 0: Target Temp
             //Top display has target temp of stage - blinking
             //Temp +/- adjusts the target temp
