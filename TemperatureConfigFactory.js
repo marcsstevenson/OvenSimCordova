@@ -7,7 +7,7 @@ function TemperatureConfigFactory() {
     self.BuildCelsius = function () {
         var temperatureConfig = new TemperatureConfig();
 
-        temperatureConfig.Id = ko.observable(1);
+        temperatureConfig.Id = ko.observable(0);
         temperatureConfig.Name = ko.observable('Celsius');
         temperatureConfig.Unit = ko.observable('°C');
 
@@ -37,14 +37,14 @@ function TemperatureConfigFactory() {
     self.BuildFahrenheit = function () {
         var temperatureConfig = new TemperatureConfig();
 
-        temperatureConfig.Id(2);
+        temperatureConfig.Id(1);
         temperatureConfig.Name('Fahrenheit');
         temperatureConfig.Unit('°F');
 
-        temperatureConfig.DefaultTargetTemperature(150);
+        temperatureConfig.DefaultTargetTemperature(325);
         temperatureConfig.DefaultTargetCoreTemperature(65);
-        temperatureConfig.MaxTargetTemperature(260);
-        temperatureConfig.MinTargetTemperature(60);
+        temperatureConfig.MaxTargetTemperature(550);
+        temperatureConfig.MinTargetTemperature(150);
         temperatureConfig.MaxTargetCoreTemperature(90);
         temperatureConfig.MinTargetCoreTemperature(50);
         temperatureConfig.TemperatureIncrement(5);

@@ -37,7 +37,7 @@ function StatusProperties(self) {
 
     //Temperature configs
     self.TemperatureConfigs = ko.observableArray(new TemperatureConfigFactory().BuildAll());
-    self.CurrentTemperatureConfig = ko.observable(self.TemperatureConfigs()[0]);
+    self.CurrentTemperatureConfig = ko.observable(self.TemperatureConfigs()[1]);
 
     //Programming
     self.ProgrammingArea = ko.observable(0); //0 = Not, 1 = Display Program, 2 = Edit Program, 3 = Edit Program Stage Values
@@ -50,15 +50,17 @@ function StatusProperties(self) {
     self.ManualModeProgramStage = ko.observable(manualModeProgramStage);
     self.DisplayingProgramStage = ko.observable(manualModeProgramStage);
 
-    self.OvenPrograms = ko.observableArray(new OvenProgramFactory().BuildEmptyOvenPrograms(self.CurrentTemperatureConfig()));
+    self.OvenPrograms = ko.observableArray();
+
+    self.ResetPrograms = function () {
+        self.OvenPrograms(new OvenProgramFactory().BuildEmptyOvenPrograms(self.CurrentTemperatureConfig()));
+    };
+
+    self.ResetPrograms();
     self.EditingOvenProgramIndex = ko.observable(0);
     self.EditingOvenProgramStageIndex = ko.observable(0);
     self.CookingOvenProgramIndex = ko.observable(0);
     self.CookingOvenProgramStageIndex = ko.observable(0);
-
-    self.TargetTemperature = ko.computed(function () {
-        return self.DisplayingProgramStage().TargetTemperature();
-    });
     
     //Status Values
     self.OvenIsOn = ko.observable();
@@ -202,4 +204,5 @@ function StatusProperties(self) {
         self.CookingOvenProgramIndex(0);
         self.CookingOvenProgramStageIndex(0);
     };
+
 }
