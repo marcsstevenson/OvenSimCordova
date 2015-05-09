@@ -158,11 +158,11 @@
             <button data-bind="click: SetDefaults">Set Defaults</button>
         </div>-->
         <div style="padding-bottom: 5px">
-            <span>Actual Temp:</span><span data-bind="text: Math.round(ActualTemperature() * 10) / 10">Temperature</span>
+            <span data-bind="text: 'Actual Temp(' + CurrentTemperatureConfig().Unit() + ')' + ': '"></span><span data-bind="text: Math.round(ActualTemperature() * 10) / 10">Temperature</span>
         </div>
 
         <div style="padding-bottom: 5px">
-            <span>Target Temp:</span><span data-bind="text: Math.round(TargetTemperature() * 10) / 10">Temperature</span>
+            <span data-bind="text: 'Target Temp(' + CurrentTemperatureConfig().Unit() + ')' + ': '">Target Temp:</span><span data-bind="text: Math.round(TargetTemperature() * 10) / 10">Temperature</span>
         </div>
         <div style="padding-bottom: 5px">
             <span data-bind="text: 'Time: (x' + TimeDilation() + ')'"></span>
@@ -182,6 +182,12 @@
         <div style="padding-bottom: 5px">
             <button data-bind="visible: !UseSmallClient(), click: UseSmallClientToggle">Use Small Display</button>
             <button data-bind="visible: UseSmallClient, click: UseSmallClientToggle">Use Large Display</button>
+        </div>
+
+        <div style="padding-bottom: 5px">
+            <button data-bind="visible: CurrentTemperatureConfig().Id() === 1, click: SetTemperatureConfigCelsius">Use °C</button>
+            <button data-bind="visible: CurrentTemperatureConfig().Id() === 0, click: SetTemperatureConfigFahrenheit">Use °F</button>
+            <span>(This resets the oven to defaults)</span>
         </div>
 
         <!--<label>Set Temperature</label>
