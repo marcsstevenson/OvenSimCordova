@@ -30,7 +30,7 @@ describe("ManaulMode", function () {
             it("Top Display shall be the new target temperature - 160", function () {
                 var topDisplayValue = ovenViewModel.TopDisplayFunction()();
 
-                expect(topDisplayValue).toEqual(160);
+                expect(topDisplayValue).toEqual(155);
             });
         });
 
@@ -42,7 +42,7 @@ describe("ManaulMode", function () {
             it("Top Display shall be the new target temperature - 140", function () {
                 var topDisplayValue = ovenViewModel.TopDisplayFunction()();
 
-                expect(topDisplayValue).toEqual(140);
+                expect(topDisplayValue).toEqual(145);
             });
         });
 

@@ -1,17 +1,15 @@
 /// <reference path="Lib/knockout-3.1.0.js" />
 /// <reference path="Lib/moment-2.8.4.min.js" />
 
-function OvenProgramStage(isManualModeStep) {
-    var defaultTargetTemperature = 150; //Oven Temperature is set to 150°C (325°F)
-    var defaultTargetCoreTemperature = 65; //Oven Temperature is set to 150°C (325°F) - TODO: Confirm
-
+function OvenProgramStage(isManualModeStep, temperatureConfig) {
     var self = this;
 
-    self.MaxTargetTemperature = 240; //+ to increase the temperature (Max. 260°C / 500°F)
-    self.MinTargetTemperature = 80; //- to decrease the temperature (Min. 60°C / 140°F)
+    self.TemperatureConfig = ko.observable(temperatureConfig);
 
-    self.MaxTargetCoreTemperature = 90; //+ to increase temperature (Max. 90°C / 194°F)
-    self.MinTargetCoreTemperature = 50; //- to decrease temperature (Min. 50°C / 122°F)
+    self.TargetTemperature = ko.observable(0);
+    self.TargetCoreTemperature = ko.observable(0);
+    self.TargetCoreTemperatureSet = ko.observable(false);
+    
     self.DefaultTimerValue = 0;
 
     self.Name = ko.observable();
@@ -19,9 +17,6 @@ function OvenProgramStage(isManualModeStep) {
     self.IsManualModeStep = ko.observable(isManualModeStep);
 
     self.IsFanLow = ko.observable();
-    self.TargetTemperature = ko.observable(0);
-    self.TargetCoreTemperature = ko.observable(0);
-    self.TargetCoreTemperatureSet = ko.observable(false);
     self.MoistureMode = ko.observable(); //1-5
 
     self.TimerStartValue = ko.observable(); //CP (-2), InF (-1), --- (0), 1-180
@@ -49,8 +44,9 @@ function OvenProgramStage(isManualModeStep) {
 
     self.SetDefaults = function () {
         self.IsFanLow(false);
-        self.TargetTemperature(defaultTargetTemperature);
-        self.TargetCoreTemperature(defaultTargetCoreTemperature);
+        //console.log(self.TemperatureConfig().DefaultTargetTemperature());
+        self.TargetTemperature(self.TemperatureConfig().DefaultTargetTemperature());
+        self.TargetCoreTemperature(self.TemperatureConfig().DefaultTargetCoreTemperature());
 
         if (self.IsManualModeStep())
             self.TimerStartValue(self.DefaultTimerValue);
@@ -67,44 +63,24 @@ function OvenProgramStage(isManualModeStep) {
     };
 
     self.FanSpeed = ko.observable(); //1 is high, 0 is low
-
-    //*** Temperature Setting - Start
-
-    self.SetTemperature = function (newValue) {
-        if (self.OvenIsOn() && newValue >= self.TargetTemperature()) //Ensure that we do not go above our target
-        {
-            self.ActualTemperature(self.TargetTemperature());
-
-            return;
-        }
-        else if (!self.OvenIsOn() && newValue <= self.StartTemperature) //Ensure that we do not go below ambient
-        {
-            self.ClearTimer(); //We may as well turn off the timer
-            self.ActualTemperature(self.StartTemperature);
-
-            return;
-        }
-
-        self.ActualTemperature(newValue);
-    };
-
+    
     self.IncreaseTargetTemperature = function () {
-        self.SetTargetTemperature(self.TargetTemperature() + 10);
+        self.SetTargetTemperature(self.TargetTemperature() + self.TemperatureConfig().TemperatureIncrement());
     };
 
     self.DecreaseTargetTemperature = function () {
-        self.SetTargetTemperature(self.TargetTemperature() - 10);
+        self.SetTargetTemperature(self.TargetTemperature() - self.TemperatureConfig().TemperatureIncrement());
     };
 
     self.SetTargetTemperature = function (newValue) {
-        if (newValue >= self.MaxTargetTemperature) //Ensure that we do not go above our max target
+        if (newValue >= self.TemperatureConfig().MaxTargetTemperature()) //Ensure that we do not go above our max target
         {
-            self.TargetTemperature(self.MaxTargetTemperature);
+            self.TargetTemperature(self.TemperatureConfig().MaxTargetTemperature());
             return;
         }
-        else if (newValue <= self.MinTargetTemperature) //Ensure that we do not go below min target
+        else if (newValue <= self.TemperatureConfig().MinTargetTemperature()) //Ensure that we do not go below min target
         {
-            self.TargetTemperature(self.MinTargetTemperature);
+            self.TargetTemperature(self.TemperatureConfig().MinTargetTemperature());
             return;
         }
 
@@ -128,14 +104,14 @@ function OvenProgramStage(isManualModeStep) {
     self.SetTargetCoreTemperature = function (newValue) {
         self.TargetCoreTemperatureSet(true); //The value has been changed
         
-        if (newValue >= self.MaxTargetCoreTemperature) //Ensure that we do not go above our max target
+        if (newValue >= self.TemperatureConfig().MaxTargetCoreTemperature()) //Ensure that we do not go above our max target
         {
-            self.TargetCoreTemperature(self.MaxTargetCoreTemperature);
+            self.TargetCoreTemperature(self.TemperatureConfig().MaxTargetCoreTemperature());
             return;
         }
-        else if (newValue <= self.MinTargetCoreTemperature) //Ensure that we do not go below min target
+        else if (newValue <= self.TemperatureConfig().MinTargetCoreTemperature()) //Ensure that we do not go below min target
         {
-            self.TargetCoreTemperature(self.MinTargetCoreTemperature);
+            self.TargetCoreTemperature(self.TemperatureConfig().MinTargetCoreTemperature());
             return;
         }
 
@@ -229,6 +205,16 @@ function OvenProgramStage(isManualModeStep) {
         } else 
             self.EditingIndex(self.EditingIndex() + 1); //Just add 1
             
+    };
+
+    self.SetTemperatureConfig = function (temperatureConfig) {
+        var hadTemperatureConfig = self.TemperatureConfig();
+
+        self.TemperatureConfig(temperatureConfig);
+
+        if (hadTemperatureConfig) {
+            //Perform conversions
+        }
     };
 
     self.SetDefaults();

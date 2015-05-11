@@ -170,10 +170,7 @@ describe("ProgramSelection", function () {
 
                             describe("after Temp_MinusClick", function () {
                                 beforeEach(function () {
-                                    console.clear();
                                     ovenViewModel.btnTimer_MinusButtonDown();
-                                    console.log(ovenViewModel.ProgrammingArea());
-                                    console.log(ovenViewModel.EditingOvenProgramStage().IsOnValue());
                                 });
 
                                 it("shall set the stage to OFF", function () {

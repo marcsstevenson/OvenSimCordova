@@ -61,6 +61,8 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\s
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\style.less \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\style.min.css \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Subscriptions.js \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\TemperatureConfig.js \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\TemperatureConfigFactory.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\TemperatureManagement.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\TimerManagement.js \

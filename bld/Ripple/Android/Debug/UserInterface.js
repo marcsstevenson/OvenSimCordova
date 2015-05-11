@@ -257,10 +257,6 @@ function UserInterface(self) {
 
     //Display Functions - Start
 
-    self.TargetTemperature = ko.computed(function () {
-        return self.DisplayingProgramStage().TargetTemperature();
-    });
-
     self.TimerDisplayValue = function () {
         if (self.TimerStarted()) {
             return self.ConvertDurtaionToDisplay(self.DisplayingProgramStage().TimerCurrentValue());

@@ -2,21 +2,24 @@
 /// <reference path="../lib/jasmine-2.1.3/jasmine.js" />
 /// <reference path="../../Lib/jquery-2.1.1.min.js" />
 /// <reference path="../../OvenProgramFactory.js" />
+/// <reference path="../../TemperatureConfigFactory.js" />
+/// <reference path="../../TemperatureConfig.js" />
 
 describe("OvenProgramStage", function () {
     var ovenProgramFactory;
     var testOvenPrograms;
+    var celsiusConfig = new TemperatureConfigFactory().BuildCelsius();
 
     beforeEach(function () {
         ovenProgramFactory = new OvenProgramFactory();
-        testOvenPrograms = ovenProgramFactory.BuildEmptyOvenPrograms();
+        testOvenPrograms = ovenProgramFactory.BuildEmptyOvenPrograms(celsiusConfig);
     });
     
     describe("with a blank OvenProgramStage", function () {
         var testProgramStage;
 
         beforeEach(function () {
-            testProgramStage = new OvenProgramStage();
+            testProgramStage = new OvenProgramStage(false, celsiusConfig);
         });
 
         it("DisplayingProgramStage shall not be manual stage", function () {
