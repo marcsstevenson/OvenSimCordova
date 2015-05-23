@@ -31,6 +31,7 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\_where-is-www.txt \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\app.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\BlankCordovaApp1.v12.suo \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\ChangeLog.txt \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\cordova.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\cordova_plugins.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\css \
@@ -167,6 +168,7 @@ E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\T
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\OvenProgramStage.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\Power.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\ProgramSelection.Spec.js \
+E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\TempLight.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\spec\Timer.CountUp.Spec.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\src\Player.js \
 E:\Git\FlatWhiteSoftware\OvenSimCordova\bld\Debug\platforms\android\assets\www\Tests\src\Song.js \

@@ -1,0 +1,18 @@
+﻿Last Done:
+1.       Red LED on temp button should only be on if the heating is on (ie the actual temp is less than set temp).  At present it never seems to go out. 
+
+Still outstanding: 
+  
+2.       Android version up on the play store.  I understand this needs Moffat to set up an android account etc.  Please send me what I need to know to do this. 
+3.       Sort out the H-setting bug where it displays the set temperature (refer your email below). 
+4.       When running a multistage bake program, the timer should display the total combined stages time remaining.   Ie a 2 -stage recipe, stage one 5 mins, stage two 10mins should count down from 15mins when start button is pressed. 
+At present there is some kind of bug here, in this recipe example it actually counts down the last stage twice (ie 10 mins then another 10 mins). 
+5.       H-setting values aren't meant to be circular (ie you shouldn't be able to go back one from H-0 to get to H-5, or up one from H-5 to get to H-0). 
+BUG - If you press "connect CP", then "disconnect CP" the temp light flashes for 5 seconds.  After that pressing the temp button to show actual temp doesn't work anymore. 
+Other items (lower priority) from your email below. 
+6.       I haven’t been able to replicate the bug that we found where tapping temp +/- during moisture setup was changing the top display back to temperature (eg, H-0 => 160). Are you able to work out steps to replicate this?  (I can't exactly figure out what's causing this, but it has done it a number of times for me today - each time it happened after holding down the steam button to edit the H-setting, then pressing the +/- button 3 or 4 times quickly.  It also happened when setting the H-level in programming mode, from then on whilst in P mode the top display shows the set temp.) 
+7.       Implement core probe cooking. (Yes but not high priority.  this could be done as an update at later date.) 
+8.       Look into that mysterious bug that we found where during program edit tapping temp + x3 quickly lead to the temp being displayed at top instead of P0X. Let me know if you work out how to replicate this please. 
+9.       Pause cook when and end of program stage alarm is triggered (until Start/Stop is tapped). (Yes but not high priority.  this could be done as an update at later date.) 
+10.   Get your knobs tweaking 
+11.   Digital signing for Android Play store 

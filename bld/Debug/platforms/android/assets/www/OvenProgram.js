@@ -66,5 +66,35 @@ function OvenProgram() {
             self.OvenProgramStages()[i].TemperatureConfig(temperatureConfig);
     };
 
+    self.TotalTimeRemaining = ko.computed(function () {
+        var totalTimeRemaining = moment.duration(0, 'minutes');
+
+        for (var i = 0; i < self.OvenProgramStages().length - 1; i++) {
+            if (!self.OvenProgramStages()[i].IsOnValue())
+                break;
+
+            //Add the 
+            totalTimeRemaining.add(self.OvenProgramStages()[i].TimerCurrentValue());
+        }
+
+        return totalTimeRemaining;
+    });
+
+    //self.TotalTimeRemaining = function () {
+    //    var totalTimeRemaining = moment.duration(0, 'minutes');
+        
+    //    for (var i = 0; i < self.OvenProgramStages().length; i++) {
+
+    //        console.log(self.OvenProgramStages()[i].IsOn());
+    //        if (!self.OvenProgramStages()[i].IsOn())
+    //            break;
+
+    //        //Add the 
+    //        totalTimeRemaining.add(self.OvenProgramStages()[i].TimerCurrentValue());
+    //    }
+
+    //    return totalTimeRemaining;
+    //};
+
     return self;
 }

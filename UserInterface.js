@@ -71,7 +71,7 @@ function UserInterface(self) {
         if (self.DisplayingActualTemperature()) {
             return self.DisplayingActualTemperature();
         } else {
-            return self.IsHeating();
+            return self.IsHeating() && !self.AtTargetTemperature();
         }
     });
 
@@ -304,9 +304,7 @@ function UserInterface(self) {
 
     self.ConvertDurtaionToDisplay = function (duration) {
         if (duration.minutes() > 10) { return duration.minutes(); }
-
-        //console.log(duration.minutes + ':' + (duration.seconds < 10 ? '0' : '') + duration.seconds);
-
+        
         return duration.minutes() + ':' + (duration.seconds() < 10 ? '0' : '') + duration.seconds();
     };
 

@@ -12,7 +12,6 @@ function TemperatureConfigFactory() {
         temperatureConfig.Unit = ko.observable('°C');
 
         temperatureConfig.DefaultTargetTemperature(150);
-        temperatureConfig.Test(false);
         temperatureConfig.DefaultTargetCoreTemperature(65);
         temperatureConfig.MaxTargetTemperature(260);
         temperatureConfig.MinTargetTemperature(60);

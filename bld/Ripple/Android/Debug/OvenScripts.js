@@ -15,7 +15,7 @@ window.OvenScripts = (function () {
             ovenViewModel.ProgramTap();
 
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
@@ -23,7 +23,7 @@ window.OvenScripts = (function () {
             ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
@@ -31,7 +31,7 @@ window.OvenScripts = (function () {
             ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
@@ -55,7 +55,7 @@ window.OvenScripts = (function () {
             //Increase the Temperature x 9
             for (var i = 0; i < 9; i++) ovenViewModel.Temp_PlusClickFunction()();
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
@@ -63,7 +63,7 @@ window.OvenScripts = (function () {
             ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
@@ -71,7 +71,7 @@ window.OvenScripts = (function () {
             ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
-            ovenViewModel.Timer_MinusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();
             ovenViewModel.ProgramTap();

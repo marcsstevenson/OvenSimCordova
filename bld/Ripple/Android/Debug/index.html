@@ -36,15 +36,15 @@
         $(document).ready(function () {
 
 
-            var ovenViewModel = new OvenViewModel(true, true);
+            var ovenViewModel = new OvenViewModel(false, true, true); //soundEnabled, blinkingEnabled, defaultIsCelcius
             ko.applyBindings(ovenViewModel);
 
             //ovenViewModel.SoundEnabled = false;
             ovenViewModel.TurnOvenOn();
 
             //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
-            //OvenScripts.SetProgram1To150DegreesAnd5MinutesThenBackToHome(ovenViewModel);
-
+            OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+            //ovenViewModel.Test();
             //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
             //OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
             //OvenScripts.StartTimerSet1SecondBeforeEnd(ovenViewModel);
@@ -174,6 +174,13 @@
             <span>Client Height:</span>
             <span class="btn" data-bind="text: ClientHeight"></span>
         </div>
+
+        <div style="padding-bottom: 5px" data-bind="if: DisplayingProgram">
+            <span>Total Time Remaining:</span>
+            <span class="btn" data-bind="text: ConvertDurtaionToDisplay(DisplayingProgram().TotalTimeRemaining())"></span>
+        </div>
+
+<!--        <button data-bind="click: Test">Test</button>-->
 
         <div style="padding-bottom: 5px">
             <button data-bind="click: Beep">Beep Test</button>

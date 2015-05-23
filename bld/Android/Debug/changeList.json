@@ -1,9 +1,31 @@
 {
-  "changedFilesIos": [],
+  "changedFilesIos": [
+    "index.html",
+    "OvenScripts.js",
+    "ovenprogramstage.js",
+    "Timers.js",
+    "StatusProperties.js",
+    "OvenProgram.js",
+    "ovenprogramfactory.js",
+    "userinterface.js",
+    "temperatureconfig.js",
+    "TemperatureConfigFactory.js"
+  ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
+  "changedFiles": [
+    "index.html",
+    "OvenScripts.js",
+    "ovenprogramstage.js",
+    "Timers.js",
+    "StatusProperties.js",
+    "OvenProgram.js",
+    "ovenprogramfactory.js",
+    "userinterface.js",
+    "temperatureconfig.js",
+    "TemperatureConfigFactory.js"
+  ],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

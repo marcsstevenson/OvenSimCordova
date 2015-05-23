@@ -3,7 +3,7 @@
 /// <reference path="OvenProgramFactory.js" />
 /// <reference path="TemperatureConfigFactory.js" />
 
-function StatusProperties(self) {
+function StatusProperties(self, defaultIsCelcius) {
     self.MasterBlinkOn = ko.observable(true);
 
     self.StartTemperature = 18;
@@ -19,36 +19,31 @@ function StatusProperties(self) {
 
     self.CoreProbeConnected = ko.observable(false);
     self.ActualCoreTemperature = ko.observable(0);
-    //self.TargetCoreTemperature = ko.observable(0);
     self.TargetCoreTemperatureSet = ko.observable(false);
     self.IsPreheating = ko.observable(false);
 
     self.TargetCoreTemperatureBlinkOn = ko.observable(false);
     self.TargetCoreTemperatureAlternate = ko.observable(false);
     self.CoreTemperatureCookingStarted = ko.observable(false);
-
-    //self.TimerStartValue = ko.observable(0); //moment.duration
-    //self.TimerCurrentValue = ko.observable(0); //moment.duration
     self.TimerDirectionUp = ko.observable(true);
     self.TimerStarted = ko.observable(false);
     self.TimerRunning = ko.observable(false);
     self.TimerComplete = ko.observable(false);
-
-
+    
     //Temperature configs
+    var temperatureConfigIndex = 0;
+
+    if (defaultIsCelcius !== 'undefined' && defaultIsCelcius !== null && defaultIsCelcius === false)
+        temperatureConfigIndex = 1;
+
     self.TemperatureConfigs = ko.observableArray(new TemperatureConfigFactory().BuildAll());
-    self.CurrentTemperatureConfig = ko.observable(self.TemperatureConfigs()[1]);
+    self.CurrentTemperatureConfig = ko.observable(self.TemperatureConfigs()[temperatureConfigIndex]);
 
     //Programming
     self.ProgrammingArea = ko.observable(0); //0 = Not, 1 = Display Program, 2 = Edit Program, 3 = Edit Program Stage Values
     self.IsProgramming = ko.computed(function() {
         return self.ProgrammingArea() > 0;
     });
-
-    var manualModeProgramStage = new OvenProgramStage(true, self.CurrentTemperatureConfig());
-    manualModeProgramStage.IsManualModeStep(true);
-    self.ManualModeProgramStage = ko.observable(manualModeProgramStage);
-    self.DisplayingProgramStage = ko.observable(manualModeProgramStage);
 
     self.OvenPrograms = ko.observableArray();
 
@@ -57,6 +52,19 @@ function StatusProperties(self) {
     };
 
     self.ResetPrograms();
+
+    var manualOvenProgram = new OvenProgram();
+    var manualModeProgramStage = new OvenProgramStage(true, self.CurrentTemperatureConfig());
+    manualOvenProgram.AddOvenProgramStage(manualModeProgramStage);
+    manualModeProgramStage.IsManualModeStep(true);
+    self.ManualModeProgramStage = ko.observable(manualModeProgramStage);
+    self.DisplayingProgram = ko.observable(manualOvenProgram);
+    self.DisplayingProgramStage = ko.observable(manualModeProgramStage);
+
+    //self.Test = function() {
+    //    console.log(self.ConvertDurtaionToDisplay(self.OvenPrograms()[0].TotalTimeRemaining()));
+    //};
+
     self.EditingOvenProgramIndex = ko.observable(0);
     self.EditingOvenProgramStageIndex = ko.observable(0);
     self.CookingOvenProgramIndex = ko.observable(0);
@@ -172,6 +180,13 @@ function StatusProperties(self) {
         self.TimerStarted(false);
         self.TimerRunning(false);
         self.TimerComplete(false);
+
+        self.ClearSteamShotModeTimer();
+        self.ClearTempDisplayTimer();
+        self.ClearTimerCountdownTimer();
+        self.ClearHeatingTimer();
+        self.ClearCoreTemperatureModeBlinkTimer();
+        self.ClearCoreTemperatureDisplayTimer();
     };
 
     self.SetDefaults_TempUi = function () {

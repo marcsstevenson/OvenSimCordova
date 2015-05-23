@@ -4,8 +4,9 @@
 function OvenProgramStage(isManualModeStep, temperatureConfig) {
     var self = this;
 
+    self.OvenProgram = ko.observable();
+    self.TargetTemperature = ko.observable(0);
     self.TemperatureConfig = ko.observable(temperatureConfig);
-
     self.TargetTemperature = ko.observable(0);
     self.TargetCoreTemperature = ko.observable(0);
     self.TargetCoreTemperatureSet = ko.observable(false);
@@ -22,6 +23,20 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     self.TimerStartValue = ko.observable(); //CP (-2), InF (-1), --- (0), 1-180
     self.TimerDirectionUp = ko.observable(true);
     self.TimerCurrentValue = ko.observable(0); //moment.duration
+
+    self.TimerStartValue.subscribe(function () {
+        var duration = moment.duration(self.TimerStartValue(), 'minutes');
+        self.TimerCurrentValue(duration);
+
+        console.log(self.ConvertDurtaionToDisplay(duration));
+    });
+
+    //Delete this eventually because its a copy paste for testing
+    self.ConvertDurtaionToDisplay = function (duration) {
+        if (duration.minutes() > 10) { return duration.minutes(); }
+        
+        return duration.minutes() + ':' + (duration.seconds() < 10 ? '0' : '') + duration.seconds();
+    };
 
     self.AlarmOn = ko.observable(false);
 
@@ -57,13 +72,17 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
         self.TimerDirectionUp(true);
     };
 
-    //*** Fan
+    //*** Fan - Start
     self.ToggleFanValue = function () {
         self.IsFanLow(!self.IsFanLow());
     };
 
     self.FanSpeed = ko.observable(); //1 is high, 0 is low
-    
+
+    //*** Fan - End
+
+    //*** Temperature Setting - Start
+
     self.IncreaseTargetTemperature = function () {
         self.SetTargetTemperature(self.TargetTemperature() + self.TemperatureConfig().TemperatureIncrement());
     };
@@ -179,7 +198,8 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
 
     //*** Moisture mode - end
 
-    //*** Editing Values
+    //*** Editing Values - start
+
     self.SetToNoEditingValue = function () {
         self.EditingIndex(-1); //Fin
     };
@@ -216,6 +236,8 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
             //Perform conversions
         }
     };
+
+    //*** Editing Values - end
 
     self.SetDefaults();
 

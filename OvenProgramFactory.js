@@ -36,7 +36,6 @@ function OvenProgramFactory() {
         ovenProgramStage.Name(index + 1);
         ovenProgramStage.Index(index);
         
-        //TODO
         ovenProgramStage.Temperature = ko.observable();
         ovenProgramStage.DurationSeconds = ko.observable();
         ovenProgramStage.MoistureMode = ko.observable(); //1-5

@@ -7,8 +7,6 @@ function TemperatureConfig() {
     self.Name = ko.observable();
     self.Unit = ko.observable();
 
-    self.Test = ko.observable('hai');
-
     self.DefaultTargetTemperature = ko.observable(1);
     self.DefaultTargetCoreTemperature = ko.observable();
     self.MaxTargetTemperature = ko.observable();
