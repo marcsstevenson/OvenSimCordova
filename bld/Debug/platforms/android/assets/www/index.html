@@ -35,15 +35,27 @@
     <script>
         $(document).ready(function () {
 
+            var isTesting = getParameterByName("Testing") === "true";
+            var soundOn = true;
+            if (isTesting) {
+                //This is just annoying during testing
+                soundOn = false;
+            }
 
-            var ovenViewModel = new OvenViewModel(false, true, true); //soundEnabled, blinkingEnabled, defaultIsCelcius
+            var ovenViewModel = new OvenViewModel(soundOn, true, true); //soundEnabled, blinkingEnabled, defaultIsCelcius
             ko.applyBindings(ovenViewModel);
 
+            console.log(isTesting);
+
             //ovenViewModel.SoundEnabled = false;
-            ovenViewModel.TurnOvenOn();
+
+            //Testing code
+            if (isTesting) {
+                ovenViewModel.TurnOvenOn();
+                OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+            }
 
             //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
-            OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
             //ovenViewModel.Test();
             //OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
             //OvenScripts.SelectProgram1PreHeatAndStart(ovenViewModel);
@@ -78,6 +90,15 @@
             $("#btnTimer").bind("taphold", ovenViewModel.TimerButtonTapHold);
             $("#btnTimer").bind("tap", ovenViewModel.TimerButtonTap);
 
+            //Dial tap up and down
+            $("#btnTemp_Minus").on("vmousedown", ovenViewModel.btnTemp_MinusButtonDown);
+            $("#btnTemp_Minus").on("vmouseup", ovenViewModel.btnTemp_MinusButtonUp);
+            $("#btnTemp_Minus").on("vmouseout", ovenViewModel.btnTemp_MinusButtonUp);
+
+            $("#btnTemp_Plus").on("vmousedown", ovenViewModel.btnTemp_PlusButtonDown);
+            $("#btnTemp_Plus").on("vmouseup", ovenViewModel.btnTemp_PlusButtonUp);
+            $("#btnTemp_Plus").on("vmouseout", ovenViewModel.btnTemp_PlusButtonUp);
+
             //$.event.special.tap.tapholdThreshold = 2000;
             $.event.special.tap.emitTapOnTaphold = false;
 
@@ -85,6 +106,13 @@
             //    console.log('HOLD');
             //}
         });
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
     </script>
     <script src="app.js"></script>
     <title>Moffat Oven Simulator</title>
@@ -95,8 +123,10 @@
 
 <body>
     <div data-bind="css: (UseSmallClient() ? 'dialTempSmall' : 'dialTemp') + ' ' + DialTempCss()"></div>
-    <div data-bind="css: UseSmallClient() ? 'btnTemp_MinusSmall' : 'btnTemp_Minus', event: { mousedown: btnTemp_MinusButtonDown, mouseup: btnTemp_MinusButtonUp, mouseover: btnTemp_MinusOver, mouseout: btnTemp_MinusOut }"></div>
-    <div data-bind="css: UseSmallClient() ? 'btnTemp_PlusSmall' : 'btnTemp_Plus', event: { mousedown: btnTemp_PlusButtonDown, mouseup: btnTemp_PlusButtonUp, mouseover: btnTemp_PlusOver, mouseout: btnTemp_PlusOut }"></div>
+    <div id="btnTemp_Minus" data-bind="css: UseSmallClient() ? 'btnTemp_MinusSmall' : 'btnTemp_Minus'"></div>
+    <!--, event: { mousedown: btnTemp_MinusButtonDown, mouseup: btnTemp_MinusButtonUp, mouseover: btnTemp_MinusOver, mouseout: btnTemp_MinusOut }-->
+    <div id="btnTemp_Plus" data-bind="css: UseSmallClient() ? 'btnTemp_PlusSmall' : 'btnTemp_Plus'"></div>
+    <!--, event: { mousedown: btnTemp_PlusButtonDown, mouseup: btnTemp_PlusButtonUp, mouseover: btnTemp_PlusOver, mouseout: btnTemp_PlusOut }-->
 
     <div data-bind="css: (UseSmallClient() ? 'dialTimerSmall' : 'dialTimer') + ' ' + DialTimerCss()"></div>
     <div data-bind="css: UseSmallClient() ? 'btnTimer_MinusSmall' : 'btnTimer_Minus', event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }"></div>

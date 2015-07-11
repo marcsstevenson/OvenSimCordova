@@ -158,6 +158,7 @@ function UserInterface(self) {
         self.DialTempCss("");
     };
     
+    //  Minus
     self.btnTemp_MinusButtonDown = function () {
         self.DialTempCss("dialLeft");
 
@@ -170,6 +171,7 @@ function UserInterface(self) {
         self.DialTempCss("");
     };
 
+    //  Plus
     self.btnTemp_PlusButtonDown = function () {
         self.DialTempCss("dialRight");
 
@@ -198,6 +200,7 @@ function UserInterface(self) {
         self.DialTimerCss("");
     };
 
+    //  Minus
     self.btnTimer_MinusButtonDown = function () {
         self.DialTimerCss("dialLeft");
 
@@ -210,6 +213,7 @@ function UserInterface(self) {
         self.DialTimerCss("");
     };
 
+    //  Plus
     self.btnTimer_PlusButtonDown = function () {
         self.DialTimerCss("dialRight");
 

@@ -70,7 +70,7 @@ function OvenProgram() {
     self.TotalTimeRemaining = ko.computed(function () {
         var totalTimeRemaining = moment.duration(0, 'minutes');
 
-        for (var i = 0; i < self.OvenProgramStages().length - 1; i++) {
+        for (var i = 0; i < self.OvenProgramStages().length; i++) {
             if (!self.OvenProgramStages()[i].IsOnValue())
                 break;
 
@@ -80,6 +80,25 @@ function OvenProgram() {
 
         return totalTimeRemaining;
     });
+
+    self.TotalTimeRemainingTest = function() {
+        var totalTimeRemaining = moment.duration(0, 'minutes');
+
+        console.log(self.OvenProgramStages().length);
+
+        for (var i = 0; i < self.OvenProgramStages().length; i++) {
+            console.log(self.OvenProgramStages()[i].IsOnValue());
+            console.log(self.OvenProgramStages()[i].TimerCurrentValue());
+
+            if (!self.OvenProgramStages()[i].IsOnValue())
+                break;
+
+            //Add the 
+            totalTimeRemaining.add(self.OvenProgramStages()[i].TimerCurrentValue());
+        }
+
+        return totalTimeRemaining;
+    };
 
     //self.TotalTimeRemaining = function () {
     //    var totalTimeRemaining = moment.duration(0, 'minutes');

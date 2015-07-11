@@ -4,8 +4,9 @@
 function OvenProgramStage(isManualModeStep, temperatureConfig) {
     var self = this;
 
+    self.OvenProgram = ko.observable();
+    self.TargetTemperature = ko.observable(0);
     self.TemperatureConfig = ko.observable(temperatureConfig);
-
     self.TargetTemperature = ko.observable(0);
     self.TargetCoreTemperature = ko.observable(0);
     self.TargetCoreTemperatureSet = ko.observable(false);
@@ -176,11 +177,15 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     //*** Moisture mode - start
 
     self.MoistureModeDown = function () {
-        self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 5 : self.CurrentMoistureMode() - 1);
+        //self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 5 : self.CurrentMoistureMode() - 1);
+        //Change the moisture mode to no longer be circular
+        self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 0 : self.CurrentMoistureMode() - 1);
     };
 
     self.MoistureModeUp = function () {
-        self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 0 : self.CurrentMoistureMode() + 1);
+        //self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 0 : self.CurrentMoistureMode() + 1);
+        //Change the moisture mode to no longer be circular
+        self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 5 : self.CurrentMoistureMode() + 1);
     };
 
     self.MoistureIsAuto = ko.computed(function () {

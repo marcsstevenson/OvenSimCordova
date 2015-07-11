@@ -24,12 +24,12 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     self.TimerDirectionUp = ko.observable(true);
     self.TimerCurrentValue = ko.observable(0); //moment.duration
 
-    self.TimerStartValue.subscribe(function () {
-        var duration = moment.duration(self.TimerStartValue(), 'minutes');
-        self.TimerCurrentValue(duration);
+    //self.TimerStartValue.subscribe(function () {
+    //    var duration = moment.duration(self.TimerStartValue(), 'minutes');
+    //    self.TimerCurrentValue(duration);
 
-        console.log(self.ConvertDurtaionToDisplay(duration));
-    });
+    //    console.log(self.ConvertDurtaionToDisplay(duration));
+    //});
 
     //Delete this eventually because its a copy paste for testing
     self.ConvertDurtaionToDisplay = function (duration) {
@@ -177,11 +177,15 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     //*** Moisture mode - start
 
     self.MoistureModeDown = function () {
-        self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 5 : self.CurrentMoistureMode() - 1);
+        //self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 5 : self.CurrentMoistureMode() - 1);
+        //Change the moisture mode to no longer be circular
+        self.CurrentMoistureMode(self.CurrentMoistureMode() === 0 ? 0 : self.CurrentMoistureMode() - 1);
     };
 
     self.MoistureModeUp = function () {
-        self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 0 : self.CurrentMoistureMode() + 1);
+        //self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 0 : self.CurrentMoistureMode() + 1);
+        //Change the moisture mode to no longer be circular
+        self.CurrentMoistureMode(self.CurrentMoistureMode() === 5 ? 5 : self.CurrentMoistureMode() + 1);
     };
 
     self.MoistureIsAuto = ko.computed(function () {
@@ -238,6 +242,38 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     };
 
     //*** Editing Values - end
+
+    //*** Running - start
+
+    //Returns true if timer is complete
+    self.SetTimerTimerNextValue = function (timerDirectionUp) {
+        var timerCurrentValue = self.TimerCurrentValue();
+
+        var delta = moment.duration(1, 'seconds');
+
+        //If timing up - add a second, if timing down - remove a second
+        if (timerDirectionUp) {
+            //Only add if we're before the minute limit
+            if (timerCurrentValue.asMinutes() < 999) {
+                timerCurrentValue.add(delta);
+            } else {
+                return false;
+            }
+        } else {
+
+            if (timerCurrentValue.asSeconds() > 0) {
+                timerCurrentValue.subtract(delta);
+            } else {
+                return true;
+            }
+        }
+
+        self.TimerCurrentValue(timerCurrentValue);
+
+        return false;
+    };
+
+    //*** Running - end
 
     self.SetDefaults();
 

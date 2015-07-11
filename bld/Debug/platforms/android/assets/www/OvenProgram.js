@@ -17,6 +17,7 @@ function OvenProgram() {
 
     self.AddOvenProgramStage = function (ovenProgramStage) {
         self.OvenProgramStages.push(ovenProgramStage);
+        ovenProgramStage.OvenProgram(self);
     };
 
     self.SetProgramStageOn = function (index) {

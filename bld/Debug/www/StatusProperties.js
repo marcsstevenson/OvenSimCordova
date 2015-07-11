@@ -58,8 +58,14 @@ function StatusProperties(self, defaultIsCelcius) {
     manualOvenProgram.AddOvenProgramStage(manualModeProgramStage);
     manualModeProgramStage.IsManualModeStep(true);
     self.ManualModeProgramStage = ko.observable(manualModeProgramStage);
-    self.DisplayingProgram = ko.observable(manualOvenProgram);
+    
     self.DisplayingProgramStage = ko.observable(manualModeProgramStage);
+
+    self.DisplayingProgram = ko.computed(function() {
+        if (!self.DisplayingProgramStage()) return null;
+
+        return self.DisplayingProgramStage().OvenProgram();
+    });
 
     //self.Test = function() {
     //    console.log(self.ConvertDurtaionToDisplay(self.OvenPrograms()[0].TotalTimeRemaining()));
