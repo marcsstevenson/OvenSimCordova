@@ -42,6 +42,43 @@ window.OvenScripts = (function () {
             //Back home
             ovenViewModel.ProgramTap();
         },
+        Setup3StageProgram_All150WithTime12and3Minutes_BackToHome: function (ovenViewModel) {
+            //Setup all three stages of a program
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTapHold();
+            ovenViewModel.ProgramTap();
+
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Temp_PlusClickFunction()(); //Next Stage
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.Timer_PlusClickFunction()(); //Increase the timer
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+            ovenViewModel.ProgramTap();
+
+            //Back to Display Program
+            ovenViewModel.ProgramTapHold();
+            //Back home
+            ovenViewModel.ProgramTap();
+        },
         Setup3StageProgram_All240WithTime_BackToHome: function (ovenViewModel) {
             //Setup all three stages of a program
             ovenViewModel.ProgramTap();

@@ -263,7 +263,9 @@ function UserInterface(self) {
 
     self.TimerDisplayValue = function () {
         if (self.TimerStarted()) {
-            return self.ConvertDurtaionToDisplay(self.DisplayingProgramStage().TimerCurrentValue());
+            //return self.ConvertDurtaionToDisplay(self.DisplayingProgramStage().TimerCurrentValue());
+
+            return self.ConvertDurtaionToDisplay(self.DisplayingProgram().TotalTimeRemaining());
         } else {
             if (self.DisplayingProgramStage().TimerStartValue() <= -2) {
                 return "CP";

@@ -44,15 +44,15 @@
 
             var ovenViewModel = new OvenViewModel(soundOn, true, true); //soundEnabled, blinkingEnabled, defaultIsCelcius
             ko.applyBindings(ovenViewModel);
-
-            console.log(isTesting);
-
+            
             //ovenViewModel.SoundEnabled = false;
 
             //Testing code
             if (isTesting) {
                 ovenViewModel.TurnOvenOn();
-                OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+                OvenScripts.Setup3StageProgram_All150WithTime12and3Minutes_BackToHome(ovenViewModel);
+                ovenViewModel.ProgramButtonTap();
+                OvenScripts.SetActualTemperatureToTarget(ovenViewModel);
             }
 
             //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
@@ -99,6 +99,14 @@
             $("#btnTemp_Plus").on("vmouseup", ovenViewModel.btnTemp_PlusButtonUp);
             $("#btnTemp_Plus").on("vmouseout", ovenViewModel.btnTemp_PlusButtonUp);
 
+            $("#btnTimer_Minus").on("vmousedown", ovenViewModel.btnTimer_MinusButtonDown);
+            $("#btnTimer_Minus").on("vmouseup", ovenViewModel.btnTimer_MinusButtonUp);
+            $("#btnTimer_Minus").on("vmouseout", ovenViewModel.btnTimer_MinusButtonUp);
+
+            $("#btnTimer_Plus").on("vmousedown", ovenViewModel.btnTimer_PlusButtonDown);
+            $("#btnTimer_Plus").on("vmouseup", ovenViewModel.btnTimer_PlusButtonUp);
+            $("#btnTimer_Plus").on("vmouseout", ovenViewModel.btnTimer_PlusButtonUp);
+            
             //$.event.special.tap.tapholdThreshold = 2000;
             $.event.special.tap.emitTapOnTaphold = false;
 
@@ -129,9 +137,11 @@
     <!--, event: { mousedown: btnTemp_PlusButtonDown, mouseup: btnTemp_PlusButtonUp, mouseover: btnTemp_PlusOver, mouseout: btnTemp_PlusOut }-->
 
     <div data-bind="css: (UseSmallClient() ? 'dialTimerSmall' : 'dialTimer') + ' ' + DialTimerCss()"></div>
-    <div data-bind="css: UseSmallClient() ? 'btnTimer_MinusSmall' : 'btnTimer_Minus', event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }"></div>
-    <div data-bind="css: UseSmallClient() ? 'btnTimer_PlusSmall' : 'btnTimer_Plus', event: { mousedown: btnTimer_PlusButtonDown, mouseup: btnTimer_PlusButtonUp, mouseover: btnTimer_PlusOver, mouseout: btnTimer_PlusOut }"></div>
-
+    <div id="btnTimer_Minus" data-bind="css: UseSmallClient() ? 'btnTimer_MinusSmall' : 'btnTimer_Minus'"></div>
+    <!--, event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }-->
+    <div id="btnTimer_Plus" data-bind="css: UseSmallClient() ? 'btnTimer_PlusSmall' : 'btnTimer_Plus'"></div>
+    <!--, event: { mousedown: btnTimer_PlusButtonDown, mouseup: btnTimer_PlusButtonUp, mouseover: btnTimer_PlusOver, mouseout: btnTimer_PlusOut }-->
+    
     <!--<div class="btnTimer_Minus" data-bind="event: { mousedown: btnTimer_MinusButtonDown, mouseup: btnTimer_MinusButtonUp, mouseover: btnTimer_MinusOver, mouseout: btnTimer_MinusOut }"></div>
     <div class="btnTimer_Plus" data-bind="event: { mousedown: btnTimer_PlusButtonDown, mouseup: btnTimer_PlusButtonUp, mouseover: btnTimer_PlusOver, mouseout: btnTimer_PlusOut }"></div>-->
 
@@ -208,6 +218,9 @@
         <div style="padding-bottom: 5px" data-bind="if: DisplayingProgram">
             <span>Total Time Remaining:</span>
             <span class="btn" data-bind="text: ConvertDurtaionToDisplay(DisplayingProgram().TotalTimeRemaining())"></span>
+            
+
+            <button class="btn" data-bind="click: DisplayingProgram().TotalTimeRemainingTest">TEST</button>
         </div>
 
 <!--        <button data-bind="click: Test">Test</button>-->
@@ -226,7 +239,20 @@
             <button data-bind="visible: CurrentTemperatureConfig().Id() === 0, click: SetTemperatureConfigFahrenheit">Use °F</button>
             <span>(This resets the oven to defaults)</span>
         </div>
-
+        <div data-bind="if: DisplayingProgram() && DisplayingProgram().Name()">
+            <div><b data-bind="text: 'Current Program: ' + DisplayingProgram().Name()"></b></div>
+            <div><b data-bind="text: 'Current Program Stage: ' + DisplayingProgramStage().Name()"></b></div>
+            
+            <div data-bind="foreach: DisplayingProgram().OvenProgramStages">
+                <div data-bind="if: IsOn">
+                    <div data-bind="text: 'Stage: ' + Name()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TargetTemperature: ' + TargetTemperature()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TargetCoreTemperature: ' + TargetCoreTemperature()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TimerStartValue: ' + TimerStartValue()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TimerCurrentValue: ' + ConvertDurtaionToDisplay(TimerCurrentValue())"></div>
+                </div>
+            </div>
+        </div>
         <!--<label>Set Temperature</label>
         <input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->
 

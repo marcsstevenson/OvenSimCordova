@@ -11,21 +11,7 @@ function OvenProgramManagement(self) {
     self.EditingOvenProgramStage = ko.computed(function () {
         return self.EditingOvenProgram().OvenProgramStages()[self.EditingOvenProgramStageIndex()];
     });
-
-    //self.ProgramDown = function () {
-    //    self.IsWaitingForEditProgramStartInterval(true);
-    //    self.StartEditProgramStartIntervalTimer();
-    //};
-
-    //self.ProgramUp = function () {
-    //    if (self.IsWaitingForEditProgramStartInterval()) {
-    //        self.ProgramTap();
-    //    }
-
-    //    self.ClearEditProgramStartTimer();
-    //    self.IsWaitingForEditProgramStartInterval(false);
-    //};
-
+    
     //  Display Programs - Start
     self.ProgramTap = function () {
         if (self.ProgrammingArea() === 0)
@@ -324,12 +310,13 @@ function OvenProgramManagement(self) {
 
     self.ChangeDisplayProgramStage = function (delta) {
         var newIndex = self.EditingOvenProgramStageIndex() + delta;
-
+        
         if (newIndex < 0) return; //It doesn't loop
 
         var lastOnProgramStage = self.EditingOvenProgram().GetLastOnProgramStage();
-
+        
         if (!lastOnProgramStage) return; //There are no stages so there is nowhere to go
+        
 
         if (newIndex > self.EditingOvenProgram().OvenProgramStages().length - 1) return; //It doesn't loop
         if (newIndex > lastOnProgramStage.Index() + 1) return; //We cannot move one past the last on stage
@@ -345,6 +332,7 @@ function OvenProgramManagement(self) {
     }
 
     self.ChangeDisplayProgramStageIndex = function (newIndex) {
+        self.DisplayingProgramStage(self.DisplayingProgram().OvenProgramStages()[newIndex]);
         self.EditingOvenProgramStageIndex(newIndex);
         //self.SetForDisplayProgramTargetTemperature(); //The target temperature may have changed
     }
@@ -372,7 +360,6 @@ function OvenProgramManagement(self) {
     //  Edit Programs - End
 
     self.SetBottomDisplayForProgramDisplay = function () {
-
         self.TimerButtonTapFunction(self.StartRunningProgram);
         self.TimerButtonTapHoldFunction(null);
 
@@ -387,18 +374,27 @@ function OvenProgramManagement(self) {
     };
 
     self.StartRunningProgram = function () {
+        //Prepare the program
+        self.DisplayingProgram().PrepareToRun();
+
+        if (self.AtTargetTemperature()) {
+            self.StartRunningProgramStage();
+        } else {
+            //Continue heating until rdY
+            self.Log('We are not at target temperature');
+        }
+    };
+
+    self.StartRunningProgramStage = function () {
         if (self.AtTargetTemperature()) {
             //Display timer in bottom display
             self.BottomDisplayFunction(self.TimerDisplayValue);
-
+            
             //Start timer
             self.StartTimer();
 
             //Set the timer buttons back to normal
             self.SetDefaults_TimerButtons();
-
-            //Restore the bottom display value
-            self.BottomDisplayFunction(self.TimerDisplayValue);
 
             //Stop with the beeping already
             self.StopAlarm();

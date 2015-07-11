@@ -44,15 +44,15 @@
 
             var ovenViewModel = new OvenViewModel(soundOn, true, true); //soundEnabled, blinkingEnabled, defaultIsCelcius
             ko.applyBindings(ovenViewModel);
-
-            console.log(isTesting);
-
+            
             //ovenViewModel.SoundEnabled = false;
 
             //Testing code
             if (isTesting) {
                 ovenViewModel.TurnOvenOn();
-                OvenScripts.Setup3StageProgram_All150WithTime_BackToHome(ovenViewModel);
+                OvenScripts.Setup3StageProgram_All150WithTime12and3Minutes_BackToHome(ovenViewModel);
+                ovenViewModel.ProgramButtonTap();
+                OvenScripts.SetActualTemperatureToTarget(ovenViewModel);
             }
 
             //new OvenScripts().SetProgram1_1TempToCP(ovenViewModel);
@@ -239,7 +239,20 @@
             <button data-bind="visible: CurrentTemperatureConfig().Id() === 0, click: SetTemperatureConfigFahrenheit">Use °F</button>
             <span>(This resets the oven to defaults)</span>
         </div>
-
+        <div data-bind="if: DisplayingProgram() && DisplayingProgram().Name()">
+            <div><b data-bind="text: 'Current Program: ' + DisplayingProgram().Name()"></b></div>
+            <div><b data-bind="text: 'Current Program Stage: ' + DisplayingProgramStage().Name()"></b></div>
+            
+            <div data-bind="foreach: DisplayingProgram().OvenProgramStages">
+                <div data-bind="if: IsOn">
+                    <div data-bind="text: 'Stage: ' + Name()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TargetTemperature: ' + TargetTemperature()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TargetCoreTemperature: ' + TargetCoreTemperature()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TimerStartValue: ' + TimerStartValue()"></div>
+                    <div style="margin-left: 20px" data-bind="text: 'TimerCurrentValue: ' + ConvertDurtaionToDisplay(TimerCurrentValue())"></div>
+                </div>
+            </div>
+        </div>
         <!--<label>Set Temperature</label>
         <input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->
 

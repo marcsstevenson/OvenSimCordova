@@ -25,7 +25,7 @@ function StatusProperties(self, defaultIsCelcius) {
     self.TargetCoreTemperatureBlinkOn = ko.observable(false);
     self.TargetCoreTemperatureAlternate = ko.observable(false);
     self.CoreTemperatureCookingStarted = ko.observable(false);
-    self.TimerDirectionUp = ko.observable(true);
+
     self.TimerStarted = ko.observable(false);
     self.TimerRunning = ko.observable(false);
     self.TimerComplete = ko.observable(false);
@@ -60,6 +60,14 @@ function StatusProperties(self, defaultIsCelcius) {
     self.ManualModeProgramStage = ko.observable(manualModeProgramStage);
     
     self.DisplayingProgramStage = ko.observable(manualModeProgramStage);
+
+    //self.TimerDirectionUp = ko.observable(true);
+
+    self.TimerDirectionUp = ko.computed(function () {
+        if (!self.DisplayingProgramStage()) return true;
+
+        return self.DisplayingProgramStage().TimerDirectionUp();
+    });
 
     self.DisplayingProgram = ko.computed(function() {
         if (!self.DisplayingProgramStage()) return null;

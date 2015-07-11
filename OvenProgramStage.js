@@ -7,7 +7,7 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     self.OvenProgram = ko.observable();
     self.TargetTemperature = ko.observable(0);
     self.TemperatureConfig = ko.observable(temperatureConfig);
-    self.TargetTemperature = ko.observable(0);
+    
     self.TargetCoreTemperature = ko.observable(0);
     self.TargetCoreTemperatureSet = ko.observable(false);
     
@@ -21,7 +21,7 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
     self.MoistureMode = ko.observable(); //1-5
 
     self.TimerStartValue = ko.observable(); //CP (-2), InF (-1), --- (0), 1-180
-    self.TimerDirectionUp = ko.observable(true);
+    //self.TimerDirectionUp = ko.observable(true);
     self.TimerCurrentValue = ko.observable(0); //moment.duration
 
     //self.TimerStartValue.subscribe(function () {
@@ -69,7 +69,7 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
             self.TimerStartValue(0);
 
         self.TimerCurrentValue(moment.duration(0, 'minutes'));
-        self.TimerDirectionUp(true);
+        //self.TimerDirectionUp(true);
     };
 
     //*** Fan - Start
@@ -271,6 +271,29 @@ function OvenProgramStage(isManualModeStep, temperatureConfig) {
         self.TimerCurrentValue(timerCurrentValue);
 
         return false;
+    };
+
+    self.TimerDirectionUp = ko.computed(function () {
+        return self.TimerStartValue() <= -1;
+    });
+
+    self.PrepareToRun = function () {
+        var duration;
+
+        if (self.TimerStartValue() <= -1) {
+            //Count down
+            //self.TimerDirectionUp(true); //Up
+
+            //Set the duration to run
+            duration = moment.duration(0, 'minutes');
+        } else {
+            //Count up
+            //self.TimerDirectionUp(false); //Down
+
+            //Set the duration to run
+            duration = moment.duration(self.TimerStartValue(), 'minutes');
+        }
+        self.TimerCurrentValue(duration);
     };
 
     //*** Running - end

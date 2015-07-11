@@ -100,21 +100,11 @@ function OvenProgram() {
         return totalTimeRemaining;
     };
 
-    //self.TotalTimeRemaining = function () {
-    //    var totalTimeRemaining = moment.duration(0, 'minutes');
-        
-    //    for (var i = 0; i < self.OvenProgramStages().length; i++) {
-
-    //        console.log(self.OvenProgramStages()[i].IsOn());
-    //        if (!self.OvenProgramStages()[i].IsOn())
-    //            break;
-
-    //        //Add the 
-    //        totalTimeRemaining.add(self.OvenProgramStages()[i].TimerCurrentValue());
-    //    }
-
-    //    return totalTimeRemaining;
-    //};
-
+    self.PrepareToRun = function () {
+        for (var i = 0; i < self.OvenProgramStages().length; i++) {
+            self.OvenProgramStages()[i].PrepareToRun();
+        }
+    };
+    
     return self;
 }
