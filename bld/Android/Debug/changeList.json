@@ -1,28 +1,14 @@
 {
   "changedFilesIos": [
     "index.html",
-    "timermanagement.js",
-    "ovenprogramstage.js",
-    "TemperatureManagement.js",
-    "ovenmanager.js",
-    "userinterface.js",
-    "ovenprogram.js",
-    "ovenscripts.js",
-    "OvenProgramManagement.js",
-    "StatusProperties.js"
+    "TimerManagement.js"
   ],
   "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
     "index.html",
-    "ovenprogram.js",
-    "ovenprogramstage.js",
-    "timermanagement.js",
-    "ovenscripts.js",
-    "OvenProgramManagement.js",
-    "StatusProperties.js",
-    "userinterface.js"
+    "TimerManagement.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

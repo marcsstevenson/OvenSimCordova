@@ -52,6 +52,10 @@
                 ovenViewModel.TurnOvenOn();
                 OvenScripts.Setup3StageProgram_All150WithTime12and3Minutes_BackToHome(ovenViewModel);
                 ovenViewModel.ProgramButtonTap();
+
+                //ovenViewModel.btnTimer_PlusButtonDown(); //Increase timer
+                //ovenViewModel.btnTimer_PlusButtonUp();
+
                 OvenScripts.SetActualTemperatureToTarget(ovenViewModel);
             }
 
@@ -220,7 +224,7 @@
             <span class="btn" data-bind="text: ConvertDurtaionToDisplay(DisplayingProgram().TotalTimeRemaining())"></span>
             
 
-            <button class="btn" data-bind="click: DisplayingProgram().TotalTimeRemainingTest">TEST</button>
+            <!--<button class="btn" data-bind="click: DisplayingProgram().TotalTimeRemainingTest">TEST</button>-->
         </div>
 
 <!--        <button data-bind="click: Test">Test</button>-->
@@ -253,8 +257,6 @@
                 </div>
             </div>
         </div>
-        <!--<label>Set Temperature</label>
-        <input data-bind="value: TargetTemperature" type="number" style="width: 200px"/>-->
 
         <audio controls id="beepControl" preload="auto" style="display: none">
             <source src="Sounds/beep1.mp3" type="audio/mpeg">
